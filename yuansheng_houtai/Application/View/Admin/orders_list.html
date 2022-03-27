@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>电商后台管理-后台管理</title>
+
+<link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
+<link rel="stylesheet" href="/Public/Admin/css/admin.css">
+</head>
+
+<body>
+    <a href="index.php?p=Admin&c=Orders&a=list" class="button button-small border-green" style="margin-bottom:2px;">订单</a>
+	<table border='1' width='980' bordercolor='#000'>
+		<tr>
+			<th>编号</th> <th>用户</th> <th>商品名称</th ><th>商品数量</th>   <th>商品价格</th ><th>购买时间</th> <th>删除</th>
+		</tr>
+{foreach $list as $rows}
+<tr style="text-align: center;" height="28px">
+        <td>{$rows['Oid']}</td>
+        <td>{$rows['Uid']}</td>
+        <td>{$rows['Pid']}</td>
+        <td>{$rows['number']}</td>
+        <td>{$rows['Ototal_Amount']}</td>
+        <td>{$rows['Otime']}</td>
+        <td><a class="button border-yellow button-little" href="javascript:void(0)" onclick="if(confirm('确定要删除吗')){ location.href='index.php?p=Admin&c=Orders&a=del&oid={$rows['Oid']}'}">删除</a></td>
+</tr>
+{/foreach}
+	</table>
+</body>
+</html>

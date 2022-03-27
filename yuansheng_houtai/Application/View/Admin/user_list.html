@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>电商后台管理-后台管理</title>
+    <link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
+    <link rel="stylesheet" href="/Public/Admin/css/admin.css">
+</head>
+
+<body>
+<div class="admin">
+	<form method="post">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>用户信息</strong></div>
+    	<table class="table table-hover">
+        	<tr>
+        	  <th width="45">编号</th>
+        	  <th width="*">姓名</th>
+        	  <th width="*">用户头像</th>
+        	  <th width="*">最后登陆时间</th>
+        	  <th width="*">登录次数</th><th width="100">操作</th></tr>
+              {foreach $list as $rows}
+            <tr>
+            <td>{$rows['user_id']}</td>
+            <td>{$rows['user_name']}</td>
+            <td><img src="/Public/Uploads/{$rows['user_face']}" width="25px" height="25px"></td>
+            <td>{date("Y-m-d H:i:s",$rows['user_login_time'])}</td>
+            <td>{$rows['user_login_count']}</td>
+            <td><a class="button border-yellow button-little" href="index.php?p=Admin&c=Users&a=edit&user_id={$rows['user_id']}">修改</a>&nbsp;
+                <a class="button border-yellow button-little" href="index.php?p=Admin&c=Users&a=del&user_id={$rows['user_id']}" onclick="return confirm('确认删除?')">删除</a></td></tr>
+            {/foreach}
+        </table>
+    </div>
+    </form>
+    <br />
+    <p class="text-right text-gray">基于<a class="text-gray" target="_blank" href="index.php?p=Admin&c=Users&a=del&proid={$rows['user_id']}">Person</a>构建</p>
+</div>
+</body>
+</html>
