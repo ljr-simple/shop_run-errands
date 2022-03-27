@@ -47,13 +47,6 @@ else if(isset($_GET['action']) && $_GET['action'] == 'shopCar'){
     // 终止脚本
     exit;
 }
-else if(isset($_GET['action']) && $_GET['action'] == 'sendtask'){
-	// 跳转到发布任务页面
-    header('Location: sendtask.php');
-
-    // 终止脚本
-    exit;
-}
 else if(isset($_GET['action']) && $_GET['action'] == 'article'){
 	// 跳转到购物车页面
     header('Location: article.php');
@@ -68,55 +61,49 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
     // 终止脚本
     exit;
 }
-//如果有get传值pid的话
-if(isset($_GET['pid'])){
-	$temp=$_GET['pid'];
-	
-	//如果原本就有$_SESSION['pid']
-	if(isset($_SESSION['pid'])){
-		$add_flag=TRUE;
-//		$a=unserialize($_COOKIE['pid']);
-		$a=$_SESSION['pid'];
-		foreach($a as $v){
-			//如果商品已经添加了
-			if($v==$temp){
-				$add_flag=FALSE;
-				echo "<script>alert('该商品已经添加了');</script>";
-				//我这里没有写匹配到了还会怎样，应该直接结束才对的
-			}
-		}
-		//如果商品还没用被加入
-		if($add_flag){
-			array_push($a,$temp);
-			$_SESSION['pid']=$a;
-		}
-		
-	//如果没有$_SESSION['pid']	
-	}else{
-		$b=array($temp);
-		$_SESSION['pid']=$b;
-		
-	}
 
+//当资料都填齐的话
+if(isset($_POST['pname'])&&isset($_POST['ptotal'])&&isset($_POST['pword'])&&isset($_FILES['pic'])){
+	$pname=$_POST['pname'];
+	$ptotal=$_POST['ptotal'];
+	$pword=$_POST['pword'];
+	$puser=$_SESSION['usersinfo']['Uno'];
+	$p=$_FILES['pic'];
+	$pimg=$p['name'];
+	$rst=FALSE;
+	
+	//获取上传文件的类型
+	$type=substr(strrchr($pimg, '.'), 1);
+	//判断上传文件类型
+	//当为jpg或者是png的时候
+	if($type=='jpg'||$type=='png'){
+		//移动数据			
+		move_uploaded_file($p['tmp_name'],iconv("UTF-8","gb2312",'images/product/'.$pimg));
+		$sql="insert into products(Pname,Ptotal,Pword,PIMG,Puser) values('$pname',$ptotal,'$pword','$pimg','$puser');";
+		$rst=mysqli_query(db_init(), $sql);	
+	}
+	else{
+		echo "上传的图片不为png或者jpg格式，请重新输入，3秒后返回";
+		header("refresh:3;url=sendtask.php");
+	}
+	
+	
+	if($rst){
+		header("refresh:0;url=addtask.php");
+	}
+	else{
+		echo "资料没填满或者未知错误,3秒后返回添加界面";
+		header("refresh:3;url=sendtask.php");
+	}			
 }
-//使用搜索引擎搜索商品
+
+//如果有session记录的话
 if(isset($_SESSION['usersinfo'])){
-	if(!isset($_POST['iproname'])){
-		//商品传值
-		$sql="select * from products";
-		$_SESSION['iproname']='';
-		$product=db_fetch_all($sql);
-		require "index_html.php";
-	}
-	else if(isset($_POST['iproname'])){
-		$word=$_POST['iproname'];
-		$_SESSION['iproname']=$word;
-		$sql="select * from products where Pname like '%$word%'";
-		$product=db_fetch_all($sql);
-		require "index_html.php";
-	}
-}
-else{
+	//文章传值
+	$uid=$_SESSION['usersinfo']['Uid'];
+	require "sendtask_html.php";
+	
+}else{
 	echo "<script>alert('对不起，你还没有登陆');</script>";
 	require "login_html.php";
 }

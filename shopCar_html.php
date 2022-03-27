@@ -53,7 +53,7 @@
 			        	?>
 			        </span></a></li>
         <li>
-          <a href="?action=shopCar">购物车 
+          <a href="?action=shopCar">已接单列表 
 		       	<span id="">(
 		       		<?php if(isset($_SESSION['pid'])){		       				       									
 					$pid_length=$_SESSION['pid'];
@@ -65,6 +65,8 @@
 		       	</span></a>
         </li>
 		
+        <li><a href="?action=sendtask" class="">发布任务
+		</a></li>
 		<li><a href="?action=article" class="">精品文章
               </a></li>
         <li><a href="?action=order" class="">查看订单
@@ -105,15 +107,15 @@
 					<input type="hidden" name="pid[]" id="" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
 			
 					<div class="oneMoney">
-						单件价格： <span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
+						单份价格： <span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
 					</div>
 					<div class="numAndHow">
-						数量： <input class="shopNum" type="text" name="shopNum[]" id="shopNum" value="1" />
+						任务数量： <input class="shopNum" type="text" name="shopNum[]" id="shopNum" value="1" />
 						<input class="jian" type="button" name="jian" id="jian" value="-" />
 						<input class="jia" type="button" name="jia" id="jia" value="+" />
 					</div>
 					<div class="sumMoney">
-						单件总价： <span class="sumMoneyWord">
+						任务总价： <span class="sumMoneyWord">
 							<?php echo  $shopCarProductArr[$key]["Ptotal"] ?>
 							</span>
 					</div>	
@@ -124,14 +126,14 @@
 				<div class="sumTotal">
 					<h5> 
 					共<span id="sumTotalNum"> <?php echo sizeof($shopCarProductArr);?></span>
-					 种商品 ，总价： <span id="sumTotalWord"> 
+					 个跑腿订单 ，总价： <span id="sumTotalWord"> 
 					<?php $sum=0;
 					foreach($shopCarProductArr as $key2 =>$v2){
 						$sum=$sum+$shopCarProductArr[$key2]["Ptotal"];
 					}echo $sum;	?>
 						</span> 元
 					<br />
-					<input type="submit" name="SsumTotal" id="SsumTotal" value="提交订单"/> </h5>
+					<input type="submit" name="SsumTotal" id="SsumTotal" value="完成订单"/> </h5>
 				</div>
 			</form>
 			<?php }?>

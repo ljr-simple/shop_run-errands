@@ -71,7 +71,7 @@
                               ?> 
                             </span></a></li>
                     <li>
-                        <a href="?action=shopCar">购物车
+                        <a href="?action=shopCar">已接单列表
                             <span id="">(
                                 <?php if(isset($_SESSION['pid'])){		       				       									
                           $pid_length=$_SESSION['pid'];
@@ -83,6 +83,8 @@
                             </span></a>
                     </li>
 
+                    <li><a href="?action=sendtask" class="">发布任务
+		</a></li>
                     <li><a href="?action=article">精品文章
                         </a></li>
                         <li><a href="?action=order" class="">查看订单
@@ -116,13 +118,13 @@
                         <a href="" class="order" style="text-decoration:none">订单编号：
                             <?php echo $orders[$key]["Oid"]?>
                         </a>
-                            <a href="" class="order" style="text-decoration:none">商品名称：
+                            <a href="" class="order" style="text-decoration:none">任务名称：
                                 <?php
                                 echo $P[$key]["Pname"]?>
                             </a>
-                            <a href="" class="order" style="text-decoration:none">商品数量：
+                            <a href="" class="order" style="text-decoration:none">任务数量：
                             <?php echo $orders[$key]["number"] ?>
-                        </a><a href="" class="order" style="text-decoration:none">商品总价：
+                        </a><a href="" class="order" style="text-decoration:none">任务总价：
                             <?php echo $orders[$key]["Ototal_Amount"] ?>
                         </a>
                     </div>

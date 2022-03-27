@@ -50,7 +50,7 @@
                               ?> 
                             </span></a></li>
                     <li>
-                        <a href="?action=shopCar">购物车
+                        <a href="?action=shopCar">已接单列表
                             <span id="">(
                                 <?php if(isset($_SESSION['pid'])){		       				       									
                           $pid_length=$_SESSION['pid'];
@@ -62,6 +62,8 @@
                             </span></a>
                     </li>
                     
+        <li><a href="?action=sendtask" class="">发布任务
+		</a></li>
                     <li><a href="?action=article">精品文章
                         </a></li>
                     <li><a href="?action=order" class="">查看订单

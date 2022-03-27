@@ -41,6 +41,14 @@
 			margin-top:-10px;
 			margin-bottom:6px
 		}
+		.form-group{
+			width:300px;
+			margin:0 auto;
+		}
+		.form-btn{
+			position: absolute;
+    		left: 700px;
+		}
 	</style>
 	<body>
 	<nav class="navbar navbar-default">
@@ -101,36 +109,27 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 	</nav>
-		<div>
-			<div class="title">
-				<h4>代跑任务</h4>
-			</div>
-			<div id="thing">
-				<?php foreach($product as $key => $v): ?>
-				<div class="lthing fl">							
-				<div>
-					<div class="fl">
-					<a href=""><img src="yuansheng_houtai/Public/Uploads/<?php echo $product[$key]["PIMG"] ?>" width="250px" height="250px"/></a>
-					</div>
-					<div class="fl content">
-					<div>代跑详情：<a href="" style="text-decoration:none;color:#000;"><?php echo $product[$key]["Pname"] ?></a> </div>
-					<div>
-						<a href="" class="aword" style="text-decoration:none;color:#000;" ><h5>配送地址：</h5><?php echo $product[$key]["Pword"]  ?></a>				
-					</div>
-					<div>代跑回报：<?php echo $product[$key]["Ptotal"] ?>	</div>
-					<div id="chart">		
-						<a class="AddShop" href="index.php?pid=<?php echo $product[$key]["Pid"];?>" style="text-decoration:none" >
-						<input class="btn btn-default" type="button" value="接订单">
-						</a>											
-					</div>
-				</div>
-				</div>
-				</div>
-				
-				<?php endforeach; ?>
-			</div>
-			
-		</div>
+	<form method="post"  enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="exampleInputEmail1">代跑详情：</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="pname" value="">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">代跑回报：</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="ptotal" value="">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">配送地址：</label>
+	<textarea class="form-control" id="exampleInputPassword1" name="pword" id="pword" rows="3" style="width:100%;"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">图片展示：</label>
+    <input type="file" id="exampleInputFile"  name="pic">
+    <p class="help-block">可随意选择，或是解释任务内容</p>
+  </div>
+  <button type="submit" class="btn btn-default form-btn">发布任务</button>
+</form>
+		
 		
 	</body>
 </html>

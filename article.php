@@ -53,6 +53,12 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
 
     // 终止脚本
     exit;
+}else if(isset($_GET['action']) && $_GET['action'] == 'sendtask'){
+	// 跳转到发布任务页面
+    header('Location: sendtask.php');
+
+    // 终止脚本
+    exit;
 }
 //如果有get传值article_id的话
 if(isset($_GET['article_id'])){
