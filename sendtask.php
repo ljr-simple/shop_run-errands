@@ -78,8 +78,8 @@ if(isset($_POST['pname'])&&isset($_POST['ptotal'])&&isset($_POST['pword'])&&isse
 	//当为jpg或者是png的时候
 	if($type=='jpg'||$type=='png'){
 		//移动数据			
-		move_uploaded_file($p['tmp_name'],iconv("UTF-8","gb2312",'images/product/'.$pimg));
-		$sql="insert into products(Pname,Ptotal,Pword,PIMG,Puser) values('$pname',$ptotal,'$pword','$pimg','$puser');";
+		move_uploaded_file($p['tmp_name'],iconv("UTF-8","gb2312",'yuansheng_houtai/Public/Uploads/'.$pimg));
+		$sql="insert into products(Pname,Ptotal,Pword,PIMG,Puser,Pstatus) values('$pname',$ptotal,'$pword','$pimg','$puser',1);";
 		$rst=mysqli_query(db_init(), $sql);	
 	}
 	else{

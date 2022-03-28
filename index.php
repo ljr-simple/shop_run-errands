@@ -78,19 +78,21 @@ if(isset($_GET['pid'])){
 //		$a=unserialize($_COOKIE['pid']);
 		$a=$_SESSION['pid'];
 		foreach($a as $v){
-			//如果商品已经添加了
+			//如果任务已经添加了
 			if($v==$temp){
 				$add_flag=FALSE;
 				echo "<script>alert('该商品已经添加了');</script>";
 				//我这里没有写匹配到了还会怎样，应该直接结束才对的
 			}
 		}
-		//如果商品还没用被加入
+		//如果商品还没有被加入
 		if($add_flag){
 			array_push($a,$temp);
 			$_SESSION['pid']=$a;
 		}
-		
+		//将任务的status置为0   任务已被接受
+		$sql1="update  products set Pstatus=0 where pid='$temp'";
+		$rst1=mysqli_query(db_init(), $sql1);
 	//如果没有$_SESSION['pid']	
 	}else{
 		$b=array($temp);
@@ -103,7 +105,7 @@ if(isset($_GET['pid'])){
 if(isset($_SESSION['usersinfo'])){
 	if(!isset($_POST['iproname'])){
 		//商品传值
-		$sql="select * from products";
+		$sql="select * from products where Pstatus=1";
 		$_SESSION['iproname']='';
 		$product=db_fetch_all($sql);
 		require "index_html.php";

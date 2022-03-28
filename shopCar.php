@@ -10,7 +10,7 @@ session_start();
 //如果点击了删除
 if(isset($_GET['hid']) && isset($_GET['hidPid'])){
 	
-
+	$pid=$_GET['hidPid'];
 	$shopCarProductArr=$_SESSION['shopCarProduct'];
 	unset($shopCarProductArr[(int)$_GET['hid']]);
 	$_SESSION['shopCarProduct']=$shopCarProductArr;
@@ -22,7 +22,9 @@ if(isset($_GET['hid']) && isset($_GET['hidPid'])){
 		}
 	}
 	$_SESSION['pid']=$session_PID;
-
+	
+	$sql1="update  products set Pstatus=1 where pid='$pid'";
+	$rst1=mysqli_query(db_init(), $sql1);
 	require 'shopCar_html.php';
 }
 else if(isset($_GET['action']) && $_GET['action'] == 'admin') {    
@@ -69,7 +71,6 @@ else if(isset($_SESSION['pid'])){
 		$sql="select * from products where Pid = $v;";
 		$rst=db_fetch_row($sql);
 		array_push($shopCarProductArr,$rst);
-
 	}
 	$_SESSION['shopCarProduct']=$shopCarProductArr;
 	require 'shopCar_html.php';

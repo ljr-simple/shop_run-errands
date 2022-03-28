@@ -27,6 +27,11 @@
 			img{
 				border-radius:10px 10px 10px 10px;
 			}
+			.oneGood{
+				color:grey;
+				font-size:16px;
+				text-align:center;
+			}
 		</style>
 	<nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -38,13 +43,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">嘉人</a>
+      <a class="navbar-brand" href="#">校园跑腿</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">上嘉人，就够了 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.php">跑腿锻炼，你上你也行<span class="sr-only">(current)</span></a></li>
         <li><a href="" class="">当前用户：<span>
 			        	<?php
 			        		$uno1=$_SESSION['usersinfo'];
@@ -85,7 +90,7 @@
 			<form action="pay.php" method="post">
 			<?php if(!isset($shopCarProductArr)){?>
 				<div class="oneGood" >
-					空空如也。。
+					<h3>待接单<h3>
 				</div>
 			<?php } else { ?>
 				<div class="good_total">
@@ -95,27 +100,32 @@
 				<input type="hidden" name="hidPid" id="hidPid" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
 				<div class="oneGood" >
 					<img  src="yuansheng_houtai/Public/Uploads/<?php echo $shopCarProductArr[$key]["PIMG"] ?>" width="300px" height="300px"/>
+					
 					<div class="GoodName">
-					<?php echo $shopCarProductArr[$key]["Pname"] ?>
-					 &nbsp&nbsp&nbsp&nbsp
-					 <a href="shopCar.php?
+						<a href="shopCar.php?
 					 	hid=<?php echo $key;?>
 					 	&&hidPid=<?php echo $shopCarProductArr[$key]["Pid"];?>
-					 	">删除</a> 
+					 	">放弃任务</a> <br>
+						发布人：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<?php echo $shopCarProductArr[$key]["Puser"] ?><br>
+					<?php echo $shopCarProductArr[$key]["Pname"] ?>
+					 &nbsp&nbsp&nbsp&nbsp
+					
 					</div>
 					<!--该商品id-->
 					<input type="hidden" name="pid[]" id="" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
 			
 					<div class="oneMoney">
-						单份价格： <span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
+						单份价格：&nbsp&nbsp&nbsp&nbsp &nbsp<span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
 					</div>
 					<div class="numAndHow">
-						任务数量： <input class="shopNum" type="text" name="shopNum[]" id="shopNum" value="1" />
-						<input class="jian" type="button" name="jian" id="jian" value="-" />
-						<input class="jia" type="button" name="jia" id="jia" value="+" />
+						任务数量：&nbsp&nbsp &nbsp&nbsp&nbsp <span class="shopNum" name="shopNum[]" id="shopNum" value="" >1</span>
+						<!-- <input class="shopNum" type="text" name="shopNum[]" id="shopNum" value="1" /> -->
+						<!-- <input class="jian" type="button" name="jian" id="jian" value="-" />
+						<input class="jia" type="button" name="jia" id="jia" value="+" /> -->
 					</div>
 					<div class="sumMoney">
-						任务总价： <span class="sumMoneyWord">
+						任务总价：&nbsp&nbsp&nbsp&nbsp&nbsp <span class="sumMoneyWord">
 							<?php echo  $shopCarProductArr[$key]["Ptotal"] ?>
 							</span>
 					</div>	

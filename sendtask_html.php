@@ -61,13 +61,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">嘉人</a>
+      <a class="navbar-brand" href="#">校园跑腿</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">上嘉人，就够了 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.php">跑腿锻炼，你上你也行 <span class="sr-only">(current)</span></a></li>
         <li><a href="" class="">当前用户：<span>
 			        	<?php
 			        		$uno1=$_SESSION['usersinfo'];

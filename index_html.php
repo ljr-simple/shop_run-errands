@@ -12,7 +12,7 @@
 		.aword{
 			display:inline-block;
 			width:220px;
-			height:146px;
+			height:80px;
 		}
 		#thing{
 			position: relative;
@@ -35,8 +35,8 @@
 		margin-left:20px;
 		}
 		.title{
-			width:40px;
-			height:10px;
+			width:100px;
+			height:20px;
 			margin-left:100px;
 			margin-top:-10px;
 			margin-bottom:6px
@@ -53,13 +53,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">嘉人</a>
+      <a class="navbar-brand" href="#">校园跑腿</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">上嘉人，就够了 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.php">跑腿锻炼，你上你也行 <span class="sr-only">(current)</span></a></li>
         <li><a href="" class="">当前用户：<span>
 			        	<?php
 			        		$uno1=$_SESSION['usersinfo'];
@@ -103,7 +103,7 @@
 	</nav>
 		<div>
 			<div class="title">
-				<h4>代跑任务</h4>
+				<h3>跑腿任务</h3>
 			</div>
 			<div id="thing">
 				<?php foreach($product as $key => $v): ?>
@@ -113,20 +113,21 @@
 					<a href=""><img src="yuansheng_houtai/Public/Uploads/<?php echo $product[$key]["PIMG"] ?>" width="250px" height="250px"/></a>
 					</div>
 					<div class="fl content">
-					<div>代跑详情：<a href="" style="text-decoration:none;color:#000;"><?php echo $product[$key]["Pname"] ?></a> </div>
-					<div>
-						<a href="" class="aword" style="text-decoration:none;color:#000;" ><h5>配送地址：</h5><?php echo $product[$key]["Pword"]  ?></a>				
+						<div>发布人：<a href="" style="text-decoration:none;color:#000;"><?php echo $product[$key]["Puser"] ?></a> </div>
+						<hr>
+						<div>跑腿详情：<a href="" style="text-decoration:none;color:#000;"><?php echo $product[$key]["Pname"] ?></a> </div>
+						<div>
+							<a href="" class="aword" style="text-decoration:none;color:#000;" ><h5>配送地址：</h5><?php echo $product[$key]["Pword"]  ?></a>				
+						</div>
+						<div>跑腿回报：<?php echo $product[$key]["Ptotal"] ?></div>
+						<div id="chart">		
+							<a class="AddShop" href="index.php?pid=<?php echo $product[$key]["Pid"];?>" style="text-decoration:none" >
+								<input class="btn btn-default" type="button" value="接任务">
+							</a>											
+						</div>
 					</div>
-					<div>代跑回报：<?php echo $product[$key]["Ptotal"] ?>	</div>
-					<div id="chart">		
-						<a class="AddShop" href="index.php?pid=<?php echo $product[$key]["Pid"];?>" style="text-decoration:none" >
-						<input class="btn btn-default" type="button" value="接订单">
-						</a>											
-					</div>
 				</div>
 				</div>
-				</div>
-				
 				<?php endforeach; ?>
 			</div>
 			
