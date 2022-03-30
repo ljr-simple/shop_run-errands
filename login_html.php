@@ -17,12 +17,12 @@
     <div class="line">
         <div class="xs6 xm4 xs3-move xm4-move">
             <br /><br />
-            <div class="media media-y"> <h1>嘉人</h1>
+            <div class="media media-y"> <h1>校园跑腿</h1>
             </div>
             <br /><br />
             <form action="login.php" method="post">
             <div class="panel">
-                <div class="panel-head"><strong>登录嘉人</strong></div>
+                <div class="panel-head"><strong>登录跑腿</strong></div>
                 <div class="panel-body" style="padding:30px;">
                     <div class="form-group">
                         <div class="field field-icon-right">

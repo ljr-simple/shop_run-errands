@@ -113,8 +113,9 @@ if(isset($_SESSION['usersinfo'])){
 	else if(isset($_POST['iproname'])){
 		$word=$_POST['iproname'];
 		$_SESSION['iproname']=$word;
-		$sql="select * from products where Pname like '%$word%'";
+		$sql="select * from products where Pname like '%$word%' and Pstatus=1";
 		$product=db_fetch_all($sql);
+		require "main.html";
 		require "index_html.php";
 	}
 }

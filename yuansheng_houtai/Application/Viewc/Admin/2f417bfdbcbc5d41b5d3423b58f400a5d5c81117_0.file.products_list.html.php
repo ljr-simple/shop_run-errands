@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2022-03-02 14:10:16
+/* Smarty version 3.1.32, created on 2022-03-30 14:09:07
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\products_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_621f7ac81c9746_34949509',
+  'unifunc' => 'content_6244648324aa35_31925038',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f417bfdbcbc5d41b5d3423b58f400a5d5c81117' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\products_list.html',
-      1 => 1646228681,
+      1 => 1648649260,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_621f7ac81c9746_34949509 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6244648324aa35_31925038 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html>
 <head>
@@ -29,10 +29,13 @@ function content_621f7ac81c9746_34949509 (Smarty_Internal_Template $_smarty_tpl)
 
 <link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
 <link rel="stylesheet" href="/Public/Admin/css/admin.css">
+<link rel="stylesheet" href="/Public/Admin/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
 
 <body>
     <a href="index.php?p=Admin&c=Products&a=add" class="button button-small border-green" style="margin-bottom:2px;">添加商品</a>
+    
+    <a href="index.php?p=Admin&c=Products&a=recycle" class="button button-small border-green" style="margin-bottom:2px;"><span class="glyphicon glyphicon-trash"></span>回收站</a>
 	<table border='1' width='980' bordercolor='#000'>
 		<tr>
 			<th>编号</th> <th>名称</th> <th>图片</th> <th>价格</th> <th>修改</th> <th>删除</th>

@@ -71,6 +71,19 @@ class ProductsController extends BaseController{
         //显示商品
         require __VIEW__.'products_edit.html';
     }
+    //回收站
+    public function recycleAction() {
+        //实例化模型
+        $model=new \Model\ProductsModel();
+        $choose = [
+            'Pstatus' => ['eq','0']
+        ];
+        $list=$model->select($choose);
+        //加载视图
+        //require __VIEW__.'products_list.html';
+        $this->smarty->assign('list',$list);
+        $this->smarty->display('recycle_list.html');
+    }
 }
 
 

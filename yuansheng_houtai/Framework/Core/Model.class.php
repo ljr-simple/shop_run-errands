@@ -67,6 +67,7 @@ class Model {
     //查询,返回二维数组
     public function select($cond=array()){
         $sql="select * from `{$this->table}` where 1";
+        // var_dump($cond);
 	if(!empty($cond)){
             foreach($cond as $k=>$v){
                 if(is_array($v)){	//条件的值是数组类型
@@ -100,6 +101,7 @@ class Model {
                 }
             }
 	}
+        // var_dump($sql);
         return $this->mypdo->fetchAll($sql);
     }
     //查询，返回一维数组

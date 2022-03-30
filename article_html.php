@@ -89,7 +89,25 @@
             <h3>文章精选</h3>
         </div>
         <div class="thing">
+        <table class="table table-bordered">
+        <tr><th>文章列号</th><th>文章标题</th><th>文章内容</th></tr>
             <?php foreach($article as $key => $v): ?>
+        <tr><td>
+                        <a href="" style="text-decoration:none">
+                            <?php echo $article[$key]["article_id"]?>
+                        </a></td><td>
+                            <a href="" style="text-decoration:none">
+                                <?php echo $article[$key]["article_name"]?>
+                            </a></td><td>
+                        <a href="" class="aword" style="text-decoration:none">
+                            <?php echo $article[$key]["article_content"] ?>
+                        </a></td>
+            </tr>
+        <?php endforeach; ?>
+         </table>
+    </div>
+    <!-- <?php foreach($article as $key => $v): ?>
+        <table class="table table-bordered">
             <div class="fl">
                     <div class="">
                         <a href="" style="text-decoration:none">文章列号：
@@ -108,9 +126,8 @@
                     </div>
             </div>
         </div>
-        <?php endforeach; ?>
-    </div>
-
+         </table>
+        <?php endforeach; ?> -->
     </div>
 
 </body>
