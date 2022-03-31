@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2022-03-02 14:10:39
+/* Smarty version 3.1.32, created on 2022-03-31 12:41:39
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\cat_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_621f7adfda4a78_54624081',
+  'unifunc' => 'content_6245a18320dd40_76931108',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a7748d6c8d3bfb980fc1a231974e1c6d67dbf08b' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\cat_list.html',
-      1 => 1646027020,
+      1 => 1648730374,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_621f7adfda4a78_54624081 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6245a18320dd40_76931108 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
-    <title>电商后台管理-后台管理</title>
+    <title>校园跑腿后台管理-后台管理</title>
     <link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
     <link rel="stylesheet" href="/Public/Admin/css/admin.css">
 </head>

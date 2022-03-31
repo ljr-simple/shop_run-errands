@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2022-03-02 14:10:15
+/* Smarty version 3.1.32, created on 2022-03-31 12:41:35
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\main.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_621f7ac715e293_23967312',
+  'unifunc' => 'content_6245a17fbd4234_32100203',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9de3e5ebf714582dd5396437469122155f8c5eaf' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\main.html',
-      1 => 1646027035,
+      1 => 1648730383,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_621f7ac715e293_23967312 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6245a17fbd4234_32100203 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>电商后台管理-后台管理</title>
+<title>校园跑腿后台管理-后台管理</title>
 <link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
 <link rel="stylesheet" href="/Public/Admin/css/admin.css">
 </head>

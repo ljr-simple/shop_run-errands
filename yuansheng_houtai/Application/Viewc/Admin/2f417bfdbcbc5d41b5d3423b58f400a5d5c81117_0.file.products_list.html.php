@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2022-03-30 14:09:07
+/* Smarty version 3.1.32, created on 2022-03-31 12:59:21
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\products_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_6244648324aa35_31925038',
+  'unifunc' => 'content_6245a5a930efe8_07166201',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f417bfdbcbc5d41b5d3423b58f400a5d5c81117' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\products_list.html',
-      1 => 1648649260,
+      1 => 1648731534,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6244648324aa35_31925038 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6245a5a930efe8_07166201 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>电商后台管理-后台管理</title>
+<title>校园跑腿后台管理-后台管理</title>
 
 <link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
 <link rel="stylesheet" href="/Public/Admin/css/admin.css">
 <link rel="stylesheet" href="/Public/Admin/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
-
+<style>
+    th{
+        text-align: center;
+    }
+</style>
 <body>
-    <a href="index.php?p=Admin&c=Products&a=add" class="button button-small border-green" style="margin-bottom:2px;">添加商品</a>
+    <a href="index.php?p=Admin&c=Products&a=add" class="button button-small border-green" style="margin-bottom:2px;">发布任务</a>
     
     <a href="index.php?p=Admin&c=Products&a=recycle" class="button button-small border-green" style="margin-bottom:2px;"><span class="glyphicon glyphicon-trash"></span>回收站</a>
 	<table border='1' width='980' bordercolor='#000'>

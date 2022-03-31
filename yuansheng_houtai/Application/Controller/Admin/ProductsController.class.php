@@ -6,17 +6,22 @@ class ProductsController extends BaseController{
     public function listAction() {
         //实例化模型
         $model=new \Model\ProductsModel();
-        $list=$model->select();
+        $choose = [
+            'Pstatus' => ['eq','1']
+        ];
+        $list=$model->select($choose);
         //加载视图
         //require __VIEW__.'products_list.html';
         $this->smarty->assign('list',$list);
         $this->smarty->display('products_list.html');
     }
-    //删除商品
+    //删除任务
     public function delAction() {
         $id=(int)$_GET['proid'];	//如果参数明确是整数，要强制转成整形
         $model=new \Model\ProductsModel();
-        if($model->delete($id))
+        $_POST['Pstatus']="0";
+        $_POST['Pid']=$id;
+        if($model->update($_POST))
             $this->success('index.php?p=Admin&c=Products&a=list', '删除成功');
         else 
             $this->error('index.php?p=admin&c=Products&a=list', '删除失败');
@@ -29,6 +34,9 @@ class ProductsController extends BaseController{
             $size=$GLOBALS['config']['app']['size'];
             $type=$GLOBALS['config']['app']['type'];
             $upload=new \Lib\Upload($path, $size, $type);
+            $_POST['Pstatus']='1';
+            if(!empty($_POST['Puser']))
+                $_POST['Puser']='admin';
             if($filepath=$upload->uploadOne($_FILES['PIMG'])){
                 //生成缩略图
                 $image=new \Lib\Image();
@@ -80,9 +88,28 @@ class ProductsController extends BaseController{
         ];
         $list=$model->select($choose);
         //加载视图
-        //require __VIEW__.'products_list.html';
         $this->smarty->assign('list',$list);
         $this->smarty->display('recycle_list.html');
+    }
+    //恢复回收站中的任务
+    public function re_editAction() {
+        $id=(int)$_GET['proid'];	//如果参数明确是整数，要强制转成整形
+        $model=new \Model\ProductsModel();
+        $_POST['Pstatus']="1";
+        $_POST['Pid']=$id;
+        if($model->update($_POST))
+            $this->success ('index.php?p=Admin&c=Products&a=recycle', '恢复成功');
+        else
+            $this->error ('index.php?p=Admin&c=Products&a=recycle&proid='.$proid, '恢复失败');
+    }
+    //删除回收站中任务
+    public function re_delAction() {
+        $id=(int)$_GET['proid'];	//如果参数明确是整数，要强制转成整形
+        $model=new \Model\ProductsModel();
+        if($model->delete($id))
+            $this->success('index.php?p=Admin&c=Products&a=recycle', '删除成功');
+        else 
+            $this->error('index.php?p=admin&c=Products&a=recycle', '删除失败');
     }
 }
 

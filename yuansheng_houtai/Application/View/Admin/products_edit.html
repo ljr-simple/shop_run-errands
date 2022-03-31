@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>电商后台管理-后台管理</title>
+<title>校园跑腿后台管理-后台管理</title>
 </head>
 
 <body>
 <form method="post" action="" enctype="multipart/form-data">
 	名称： <input type="text" name="Pname" value='<?=$info['Pname']?>'> <br />
 	价格： <input type="text" name="Ptotal" value='<?=$info['Ptotal']?>'> <br />
+	发布人： <input type="text" name="Puser" value='<?=$info['Puser']?>'> <br />
 	图片： <input type="file" name="PIMG"> <br />
 	简介： <textarea  name="Pword" cols="40" rows="10"><?=$info['Pword']?> </textarea><br />
 	<!--
