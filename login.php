@@ -74,7 +74,19 @@ unset($_SESSION['checkcode_code']); //清除SESSION数据
         $error[] = '用户名不存在或密码错误。';
     }
 }
-
+unset($error);
+$_SESSION['checkcode_code']='1234';
+if(!empty($_POST)){
+    if (empty($_POST['uno'])||empty($_POST['password'])) {
+        $error[] ='用户名或密码不能为空' ;
+    }else if(empty($_POST['checkcode'])){
+        $error[] ='验证码不能为空' ;
+    }else if (strtolower($code) != strtolower($_SESSION['checkcode_code'])){
+        $error[]='验证码错误'; 
+    } else{
+        $error[] = '用户名不存在或密码错误。';
+    }
+}
 require 'login_html.php';
 
 ?>
