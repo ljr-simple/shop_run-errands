@@ -105,6 +105,11 @@
 			<div class="title">
 				<h3>跑腿任务</h3>
 			</div>
+			<?php if(!$product){?>
+				<div class="oneGood" >
+					<h3>无任务<h3>
+				</div>
+			<?php } else { ?>
 			<div id="thing">
 				<?php foreach($product as $key => $v): ?>
 				<div class="lthing fl">							
@@ -131,6 +136,7 @@
 				<?php endforeach; ?>
 			</div>
 			
+			<?php }?>
 		</div>
 	</body>
 </html>

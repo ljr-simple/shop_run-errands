@@ -81,7 +81,7 @@ if(isset($_GET['pid'])){
 			//如果任务已经添加了
 			if($v==$temp){
 				$add_flag=FALSE;
-				echo "<script>alert('该商品已经添加了');</script>";
+				echo "<script>alert('该任务已经接下了');</script>";
 				//我这里没有写匹配到了还会怎样，应该直接结束才对的
 			}
 		}

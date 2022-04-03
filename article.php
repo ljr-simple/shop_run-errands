@@ -1,6 +1,6 @@
 <?php
 header('Content-Type:text/html;charset=utf-8');
-require 'init.php';
+require_once 'init.php';
 
 
 $error = array();    // 保存错误信息
@@ -109,5 +109,24 @@ else if(isset($_POST['ianame'])){
 else{
 	echo "<script>alert('对不起，你还没有登陆');</script>";
 	require "login_html.php";
+}
+
+//使用id匹配相应的帖子内容
+// if(!empty($_GET['id'])){
+// 	$id=$_GET['id'];
+// 	$sql="select * from articles where article_id=$id";
+// 	$article=db_fetch_all($sql);
+// 	require "article_conhtml.php";
+// }
+
+//点赞加一
+if(isset($_GET['like'])){
+	// echo $_GET['like'];
+    $aid=$_GET['aid'];
+    $likesql="update articles set article_like=article_like+1 where article_id=$aid";      //点赞加一
+	$a=mysqli_query(db_init(),$likesql);
+	echo "<script language=javascript>";
+	echo "location.href='?article.php';";
+	echo "</script>";
 }
 ?>

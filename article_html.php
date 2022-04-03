@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <title>Document</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>校园跑腿</title>
 </head>
 <style>
     .fl{
@@ -22,6 +24,14 @@
     .thing{
         margin-left:40px;
     }
+    .look{
+        width:60px;
+        height:28px;
+    }
+    tr,th{
+        text-align:center;
+    }
+    
 </style>
 <body>
     <nav class="navbar navbar-default">
@@ -89,19 +99,51 @@
             <h3>文章精选</h3>
         </div>
         <div class="thing">
-        <table class="table table-bordered">
-        <tr><th>文章列号</th><th>文章标题</th><th>文章内容</th></tr>
+        <table class="table table-bordered con">
+        <tr><th>列号</th><th>帖子标题</th><th>帖子浏览量</th><th>点赞数</th><th>帖子内容</th></tr>
             <?php foreach($article as $key => $v): ?>
         <tr><td>
-                        <a href="" style="text-decoration:none">
+                        
                             <?php echo $article[$key]["article_id"]?>
-                        </a></td><td>
-                            <a href="" style="text-decoration:none">
+                        </td><td>
                                 <?php echo $article[$key]["article_name"]?>
-                            </a></td><td>
-                        <a href="" class="aword" style="text-decoration:none">
-                            <?php echo $article[$key]["article_content"] ?>
-                        </a></td>
+                       </td><td>
+                            <?php echo $article[$key]["article_counts"]?>
+                            </td><td>
+                            <?php echo $article[$key]["article_like"]?>
+                            </td><td>
+                        <a href="" class="aword" style="text-decoration:none"> </a>
+                        <button type="button" class="btn btn-success look" data-toggle="modal" data-target="#myModal" onclick="targetto(<?php echo $article[$key]['article_id']?>)">查看</button>
+                    <!-- 模态框（Modal） -->
+                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                        <!--使得数据能动态加载--> 
+                        <script>
+                            //动态加载函数
+                             function targetto(id){
+                                $("#myModal").modal({
+                                remote: "article_con.php?id="+id,   //获取帖子id
+                                show:false,                         //不能手动开启
+                                hide:false                          //不能手动关闭
+                                
+                                });
+                                // console.log(id);
+                            }
+                            //关闭模态框后，数据自动删除，再请求时重新加载
+                            $("#myModal").on("hidden.bs.modal", function() {
+                                $(this).removeData("bs.modal");
+                            });
+                            // $("#myModal1").modal('show');
+                            // $("#myModal1").modal('hide');  
+                            
+                        </script>
+                   </td>
             </tr>
         <?php endforeach; ?>
          </table>

@@ -14,6 +14,15 @@
         text-align: center;
         color: gray;
         font-style: italic;
+        margin: auto;
+        width: 400px;
+        background-color: #993600;
+
+    }
+    .error-lib{
+        height: 60px;
+        width: 100%;
+        overflow: hidden;
     }
 </style>
 <body>
@@ -22,11 +31,12 @@
 		<ul><?php foreach($error as $v) echo "<li>$v</li>"; ?></ul>
 	</div>
 <?php endIf; ?> -->
+<div class="error-lib">
 <?php if(!empty($error)): ?>
 <div class="alert alert-danger error-box" role="alert">登陆失败,
 		<?php foreach($error as $v) echo $v; ?>
        </div>
-<?php endIf; ?>
+<?php endIf; ?></div>
 <div class="container">
     <div class="line">
         <div class="xs6 xm4 xs3-move xm4-move">
@@ -81,7 +91,19 @@
     // var login = document.querySelector('.login');
     // login.onclick = function(){
     //     show.style.visibility="visible";
-    }
+    // }
+    var error=document.querySelector('.error-box');
+        $('.error-box').slideUp(1,function(){           //让错误提示快速huachu
+            // setTimeout(function(){
+            //  error.style.display='none';
+            // },3000);
+        });
+        $('.error-box').fadeIn(1500,function(){         //错误提示缓慢淡入
+        });
+        setTimeout(function(){
+            $('.error-box').fadeOut("slow",function(){  //错误提示较慢淡出
+            });
+        },3000);
 </script>
 </body>
 </html>

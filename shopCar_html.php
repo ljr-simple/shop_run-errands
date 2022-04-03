@@ -29,8 +29,15 @@
 			}
 			.oneGood{
 				color:grey;
-				font-size:16px;
+				font-size:14px;
 				text-align:center;
+			}
+			.GoodName{
+				width:300px;
+				height:150px;
+				text-align:left;
+				float:right;
+				margin-top:2px;
 			}
 		</style>
 	<nav class="navbar navbar-default">
@@ -102,48 +109,50 @@
 					<img  src="yuansheng_houtai/Public/Uploads/<?php echo $shopCarProductArr[$key]["PIMG"] ?>" width="300px" height="300px"/>
 					
 					<div class="GoodName">
-						<a href="shopCar.php?
+						<button class="btn-xs"><a href="shopCar.php?
 					 	hid=<?php echo $key;?>
 					 	&&hidPid=<?php echo $shopCarProductArr[$key]["Pid"];?>
-					 	">放弃任务</a> <br>
-						发布人：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					 	">放弃任务</a></button> <br>
+						发 布 人：&nbsp&nbsp
 					<?php echo $shopCarProductArr[$key]["Puser"] ?><br>
-					<?php echo $shopCarProductArr[$key]["Pname"] ?>
-					 &nbsp&nbsp&nbsp&nbsp
-					
-					</div>
+					任务详情:&nbsp&nbsp&nbsp&nbsp
+					<?php echo $shopCarProductArr[$key]["Pname"] ?><br>
+					配送地址:&nbsp&nbsp&nbsp&nbsp
+					<?php echo $shopCarProductArr[$key]["Pword"] ?>
+					 
 					<!--该商品id-->
 					<input type="hidden" name="pid[]" id="" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
 			
 					<div class="oneMoney">
-						单份价格：&nbsp&nbsp&nbsp&nbsp &nbsp<span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
+						单份价格：&nbsp&nbsp&nbsp<span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
 					</div>
 					<div class="numAndHow">
-						任务数量：&nbsp&nbsp &nbsp&nbsp&nbsp <span class="shopNum" name="shopNum[]" id="shopNum" value="" >1</span>
+						任务数量：&nbsp&nbsp <span class="shopNum" name="shopNum[]" id="shopNum" value="" >1</span>
 						<!-- <input class="shopNum" type="text" name="shopNum[]" id="shopNum" value="1" /> -->
 						<!-- <input class="jian" type="button" name="jian" id="jian" value="-" />
 						<input class="jia" type="button" name="jia" id="jia" value="+" /> -->
 					</div>
 					<div class="sumMoney">
-						任务总价：&nbsp&nbsp&nbsp&nbsp&nbsp <span class="sumMoneyWord">
+						任务总价：&nbsp&nbsp<span class="sumMoneyWord">
 							<?php echo  $shopCarProductArr[$key]["Ptotal"] ?>
 							</span>
 					</div>	
 				</div>
+					</div>
 			</div>
 				<?php endforeach; ?>
 					</div>
 				<div class="sumTotal">
 					<h5> 
 					共<span id="sumTotalNum"> <?php echo sizeof($shopCarProductArr);?></span>
-					 个跑腿订单 ，总价： <span id="sumTotalWord"> 
+					 个跑腿任务 ，总价： <span id="sumTotalWord"> 
 					<?php $sum=0;
 					foreach($shopCarProductArr as $key2 =>$v2){
 						$sum=$sum+$shopCarProductArr[$key2]["Ptotal"];
 					}echo $sum;	?>
 						</span> 元
 					<br />
-					<input type="submit" name="SsumTotal" id="SsumTotal" value="完成订单"/> </h5>
+					<input type="submit" name="SsumTotal" id="SsumTotal" value="完成任务"/> </h5>
 				</div>
 			</form>
 			<?php }?>

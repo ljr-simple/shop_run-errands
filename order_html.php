@@ -118,9 +118,15 @@
                         <a href="" class="order" style="text-decoration:none">订单编号：
                             <?php echo $orders[$key]["Oid"]?>
                         </a>
-                            <a href="" class="order" style="text-decoration:none">任务名称：
+                        <a href="" class="order" style="text-decoration:none">发布人：
+                                <?php
+                                echo $P[$key]["Puser"]?>
+                            </a><a href="" class="order" style="text-decoration:none">任务名称：
                                 <?php
                                 echo $P[$key]["Pname"]?>
+                            </a><a href="" class="order" style="text-decoration:none">配送地址：
+                                <?php
+                                echo $P[$key]["Pword"]?>
                             </a>
                             <a href="" class="order" style="text-decoration:none">任务数量：
                             <?php echo $orders[$key]["number"] ?>
