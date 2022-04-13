@@ -115,7 +115,7 @@ if(isset($_SESSION['usersinfo'])){
 		$_SESSION['iproname']=$word;
 		$sql="select * from products where Pname like '%$word%' and Pstatus=1";
 		$product=db_fetch_all($sql);
-		require "main.html";
+		// require "main.html";
 		require "index_html.php";
 	}
 }

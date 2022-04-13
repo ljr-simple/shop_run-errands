@@ -41,6 +41,11 @@
 			margin-top:-10px;
 			margin-bottom:6px
 		}
+		.oneGood{
+			color:grey;
+			font-size:14px;
+			text-align:center;
+		}
 	</style>
 	<body>
 	<nav class="navbar navbar-default">
