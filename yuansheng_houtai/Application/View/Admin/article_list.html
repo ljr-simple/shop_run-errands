@@ -20,13 +20,14 @@
             <input type="button" class="button button-small border-green" value="添加文章" onClick="location.href='index.php?p=Admin&c=articles&a=add'"/>
         </div>
         <table class="table table-hover" id="taaa">
-            <tr><th width="80">编号</th><th width="80">名称</th><th width='80'>评论数</th><th width="200">创建时间</th><th width="200">最近修改时间</th><th width="150">操作</th></tr>
+            <tr><th width="80">编号</th><th width="100">名称</th><th width='80'>浏览量</th><th width="200">创建时间</th><th width="200">最近修改时间</th><th width="200">点赞数</th><th width="150">操作</th></tr>
             {foreach $list as $rows}
                 <td>{$rows['article_id']}</td>
                 <td>{$rows['article_name']}</td>
                 <td>{$rows['article_counts']}</td>
                 <td>{$rows['article_btime']}</td>
                 <td>{$rows['article_etime']}</td>
+                <td>{$rows['article_like']}</td>
                 <td>
                     <a class="button border-blue button-little" href="index.php?p=Admin&c=articles&a=edit&article_id={$rows['article_id']}">修改</a>
                     <a class="button border-yellow button-little" href="index.php?p=Admin&c=articles&a=del&article_id={$rows['article_id']}" onclick="return confirm('确认删除?')">删除</a>

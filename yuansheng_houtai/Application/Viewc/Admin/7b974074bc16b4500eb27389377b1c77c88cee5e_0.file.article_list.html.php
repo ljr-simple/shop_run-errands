@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2022-03-31 12:41:40
+/* Smarty version 3.1.32, created on 2022-04-25 01:02:31
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\article_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_6245a1843f4c06_72337226',
+  'unifunc' => 'content_6265f327a45c14_54865772',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7b974074bc16b4500eb27389377b1c77c88cee5e' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\article_list.html',
-      1 => 1648730355,
+      1 => 1650848547,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6245a1843f4c06_72337226 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6265f327a45c14_54865772 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -47,7 +47,7 @@ function content_6245a1843f4c06_72337226 (Smarty_Internal_Template $_smarty_tpl)
             <input type="button" class="button button-small border-green" value="添加文章" onClick="location.href='index.php?p=Admin&c=articles&a=add'"/>
         </div>
         <table class="table table-hover" id="taaa">
-            <tr><th width="80">编号</th><th width="80">名称</th><th width='80'>评论数</th><th width="200">创建时间</th><th width="200">最近修改时间</th><th width="150">操作</th></tr>
+            <tr><th width="80">编号</th><th width="100">名称</th><th width='80'>浏览量</th><th width="200">创建时间</th><th width="200">最近修改时间</th><th width="200">点赞数</th><th width="150">操作</th></tr>
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['list']->value, 'rows');
 if ($_from !== null) {
@@ -62,6 +62,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['rows']->value) {
                 <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['article_btime'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['article_etime'];?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['article_like'];?>
 </td>
                 <td>
                     <a class="button border-blue button-little" href="index.php?p=Admin&c=articles&a=edit&article_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['article_id'];?>

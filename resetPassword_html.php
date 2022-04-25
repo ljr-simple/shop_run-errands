@@ -27,7 +27,7 @@
     <div class="line">
         <div class="xs6 xm4 xs3-move xm4-move">
             <br /><br />
-            <div class="media media-y"> <h1>嘉人</h1>
+            <div class="media media-y"> <h1>校园跑腿服务系统</h1>
             </div>
             <br /><br />
             <form action="resetPassword.php" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
