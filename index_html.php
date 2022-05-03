@@ -3,9 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>首页</title>
-		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<style>
+		.carousel-inner img {
+      		width: 100%;
+      		height: 100%;
+  		}
 		.fl{
 			float:left;
 		}
@@ -34,17 +40,43 @@
 		margin-top: 30px;
 		margin-left:20px;
 		}
-		.title{
-			width:100px;
-			height:20px;
-			margin-left:100px;
-			margin-top:-10px;
-			margin-bottom:6px
-		}
 		.oneGood{
 			color:grey;
 			font-size:14px;
 			text-align:center;
+		}
+		#myCarousel{
+			margin:0 auto;
+			width:900px;
+			height:380px;
+		}
+		.item{
+			width:900px;
+			height:380px;
+		}
+		.title{
+			width:900px;
+			height:50px;
+			margin-left:150px;
+			margin-top:4px;
+			margin-bottom:-2px;
+		}
+		.bullet{
+			display: inline-block;
+			float: right;
+			width: 600px;
+			height: 50px;
+			background-color: rgb(247, 245, 241);
+			padding-bottom: 4px;
+		}
+		.main-title{
+			display: inline-block;
+			font-size: 28px;
+			float: left;
+			text-align: center;
+		}
+		#but{
+			font-size: 18px;
 		}
 	</style>
 	<body>
@@ -106,10 +138,51 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 	</nav>
+	<!-- 轮播图 -->
+	<div id="myCarousel" class="carousel slide">
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="images/11.png" alt="First slide" width="800px" height="380px">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="images/22.png" alt="Second slide" width="800px" height="380px">
+			<div class="carousel-caption"></div>
+		</div>
+		<div class="item">
+			<img src="images/54.png" alt="Third slide" width="800px" height="380px">
+			<div class="carousel-caption"></div>
+		</div>
+	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	</a>
+</div> 
+
+
 		<div>
 			<div class="title">
-				<h3>跑腿任务</h3>
+				<span class="main-title">跑腿任务</span>
+				<div class="panel panel-default bullet">
+					<div class="panel-body"><marquee><span id="but">公告：</span>
+					  五月返乡，一切平安！</marquee>
+					</div>
+				  </div>
 			</div>
+			
 			<?php if(!$product){?>
 				<div class="oneGood" >
 					<h3>无任务<h3>
