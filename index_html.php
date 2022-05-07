@@ -24,7 +24,7 @@
 			position: relative;
 			padding: 5px;
 			width:100%;
-			height: 600px;
+			height: 100%;
 		}
 		.lthing{
 			position: relative;
@@ -77,6 +77,12 @@
 		}
 		#but{
 			font-size: 18px;
+		}
+		.n_page{
+			display:block;
+			float: auto;
+			width:300px;
+			height:50px;
 		}
 	</style>
 	<body>
@@ -173,7 +179,6 @@
 </div> 
 
 
-		<div>
 			<div class="title">
 				<span class="main-title">跑腿任务</span>
 				<div class="panel panel-default bullet">
@@ -212,9 +217,29 @@
 				</div>
 				</div>
 				<?php endforeach; ?>
+				<nav aria-label="Page navigation" class="n_page">
+			<ul class="pagination">
+				<li>
+				<a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+				<a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+				</li>
+			</ul>
+			</nav>
 			</div>
 			
 			<?php }?>
-		</div>
+
+	
 	</body>
 </html>
