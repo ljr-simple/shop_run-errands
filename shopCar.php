@@ -8,7 +8,22 @@ $error = array();    // 保存错误信息
 session_start();
 
 //如果点击了删除
-if(isset($_GET['hid']) && isset($_GET['hidPid'])){
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {    
+    // 清除COOKIE数据
+    setcookie('uno', '', time() - 1);
+    setcookie('password', '', time() - 1);
+    // 清除SESSION数据
+    unset($_SESSION['usersinfo']);
+    // 如果SESSION中没有其他数据，则销毁SESSION
+    if (empty($_SESSION)) {
+        session_destroy();
+    }
+    // 跳转到登录页面
+    header('Location: login.php');
+    // 终止脚本
+    exit;
+}
+else if(isset($_GET['hid']) && isset($_GET['hidPid'])){
 	
 	$pid=$_GET['hidPid'];
 	$shopCarProductArr=$_SESSION['shopCarProduct'];

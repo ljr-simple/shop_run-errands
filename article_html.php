@@ -109,12 +109,6 @@
                         <li><a href="?action=admin" class="">管理员页面
                         </a></li>
                 </ul>
-                <form class="navbar-form navbar-left" method="post">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="<?php echo $_SESSION['ianame']?>" name="ianame">
-        </div>
-        <button type="submit" class="btn btn-default">搜索</button>
-      </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="?action=logout" class="">退出</a></li>
                 </ul>

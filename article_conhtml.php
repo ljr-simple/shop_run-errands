@@ -7,7 +7,7 @@ echo <<<str
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 <h4 class="modal-title" id="myModalLabel">帖子内容</h4>
 </div>
-<div class="modal-body"> <span>$con</span></div>
+<div class="modal-body" style=" height:620px;overflow-y:scroll;"> <span>$con</span></div>
 <div class="modal-footer">
 <button type="button" class="btn btn-default" data-dismiss="modal"><span id="aclose">关闭</span></button>
 

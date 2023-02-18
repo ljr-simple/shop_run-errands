@@ -51,9 +51,9 @@ unset($_SESSION['checkcode_code']); //清除SESSION数据
             $row = mysqli_fetch_assoc($rst);     // 处理结果集
 			
             // 数据库密码加密
-            $password_db = md5($row['salt'] . md5($password));
+            $password_db = md5($row['salt'] . md5($password))??'123456';
 
-            if ($password_db == $row['password']&&$checkFlag) {  // 判断密码与验证码是否正确                
+            if (!empty($row['password'])&&$password_db == $row['password']&&$checkFlag) {  // 判断密码与验证码是否正确                
 
                 // 登录成功，保存用户会话
                 session_start();
