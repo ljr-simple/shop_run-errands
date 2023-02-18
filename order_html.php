@@ -38,12 +38,24 @@
     }
     #thing{
         margin-left:180px;
-        width:100%;
-        height:100%;
+        width:80%;
+        height:720px;
     }
     img{
         border-radius:10px 10px 10px 10px;
     }
+    .n_page{
+		display:block;
+		float: auto;
+		width:300px;
+		height:50px;
+		margin: 0 auto;
+	}
+	.pagination{
+		width:350px;
+		height:40px;
+		display: block;
+	}
 </style>
 <body>
     <nav class="navbar navbar-default">
@@ -139,7 +151,43 @@
     </div>
 
     </div>
-
+    <div class="n_page">
+    <ul class="pagination">
+				<li>
+				<a href="?pageNum=1" aria-label="Previous">
+					首页
+				</a>
+				</li>
+				<li>
+				<a href="?pageNum=<?php echo $pageNum==1?1:$pageNum-1 ?>" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+				</li>
+				<?php foreach($count as $key => $v): ?>
+					<?php 
+						$num=$count[$key]['count(Uid)']/6 + 1;
+						while($num--){
+							if($num<0)	break;
+							?>
+								<li>
+									<a href="?pageNum=<?php echo $_SESSION['ornum'] ?>"><?php echo $_SESSION['ornum'] ?></a><?php $_SESSION['ornum']++; ?>
+								</li>
+					<?php
+						}
+					?>
+				<?php endforeach; ?>
+				<li>
+				<a href="?pageNum=<?php echo $pageNum==--$_SESSION['ornum']?--$_SESSION['ornum']:$pageNum+1 ?>" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+				</li>
+				<li>
+				<a href="?pageNum=<?php $endpage=intdiv($count[$key]['count(Uid)'],6)+1; echo $endpage; ?>" aria-label="Previous">
+					尾页
+				</a>
+				</li>
+			</ul>
+                    </div>
 </body>
 
 </html>

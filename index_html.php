@@ -24,7 +24,8 @@
 			position: relative;
 			padding: 5px;
 			width:100%;
-			height: 100%;
+			height: 550px;
+			display: block;
 		}
 		.lthing{
 			position: relative;
@@ -60,6 +61,7 @@
 			margin-left:150px;
 			margin-top:4px;
 			margin-bottom:-2px;
+			display:block;
 		}
 		.bullet{
 			display: inline-block;
@@ -83,6 +85,12 @@
 			float: auto;
 			width:300px;
 			height:50px;
+		}
+		.pagination{
+			width:350px;
+			height:40px;
+			margin: 0 auto;
+		  display: block;
 		}
 	</style>
 	<body>
@@ -217,27 +225,43 @@
 				</div>
 				</div>
 				<?php endforeach; ?>
-				<nav aria-label="Page navigation" class="n_page">
+			
+			</div>
 			<ul class="pagination">
 				<li>
-				<a href="#" aria-label="Previous">
+				<a href="?pageNum=1" aria-label="Previous">
+					首页
+				</a>
+				</li>
+				<li>
+				<a href="?pageNum=<?php echo $pageNum==1?1:$pageNum-1 ?>" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 				</a>
 				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<?php foreach($count as $key => $v): ?>
+					<?php 
+						$num=$count[$key]['count(Pname)']/6 + 1;
+						while($num--){
+							if($num<0)	break;
+							?>
+								<li>
+									<a href="?pageNum=<?php echo $_SESSION['num'] ?>"><?php echo $_SESSION['num'] ?></a><?php $_SESSION['num']++; ?>
+								</li>
+					<?php
+						}
+					?>
+				<?php endforeach; ?>
 				<li>
-				<a href="#" aria-label="Next">
+				<a href="?pageNum=<?php echo $pageNum==--$_SESSION['num']?--$_SESSION['num']:$pageNum+1 ?>" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 				</a>
 				</li>
+				<li>
+				<a href="?pageNum=<?php echo --$_SESSION['num'] ?>" aria-label="Previous">
+					尾页
+				</a>
+				</li>
 			</ul>
-			</nav>
-			</div>
-			
 			<?php }?>
 
 	

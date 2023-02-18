@@ -43,7 +43,7 @@ else if(isset($_GET['action']) && $_GET['action'] == 'admin') {
 	exit;
 }
 else if(isset($_GET['action']) && $_GET['action'] == 'article'){
-	// 跳转到购物车页面
+	// 跳转到待接单列表页面
     header('Location: article.php');
 
     // 终止脚本
@@ -56,13 +56,13 @@ else if(isset($_GET['action']) && $_GET['action'] == 'article'){
     exit;
 }
 else if(isset($_GET['action']) && $_GET['action'] == 'order'){
-	// 跳转到购物车页面
+	// 跳转到任务页面
     header('Location: order.php');
 
     // 终止脚本
     exit;
 }
-//如果有选中商品加入购物车
+//如果有选中任务加入待接单列表
 else if(isset($_SESSION['pid'])){
 	$shopCarProductArr=array();
 	$shopCarTotal=array();

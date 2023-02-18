@@ -65,7 +65,17 @@ else if(isset($_GET['action']) && $_GET['action'] == 'article'){
 if(isset($_SESSION['usersinfo'])){
 	//文章传值
 	$uid=$_SESSION['usersinfo']['Uid'];
-	$sql="select * from orders where Uid=$uid";
+	// $sql="select * from orders where Uid=$uid";
+
+	$_SESSION['ornum']=1;
+	$pageNum=$_GET['pageNum']??'1';
+	$pageSize=6;
+	//商品传值
+	$sql = "select * from orders where Uid=$uid limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
+	$countsql = "select count(Uid) from orders where Uid=$uid";
+	$_SESSION['iproname']='';
+	$count = db_fetch_all($countsql);
+
 	$orders=db_fetch_all($sql);
 	require "order_html.php";
 	

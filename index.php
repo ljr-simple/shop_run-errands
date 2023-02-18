@@ -104,17 +104,29 @@ if(isset($_GET['pid'])){
 //使用搜索引擎搜索商品
 if(isset($_SESSION['usersinfo'])){
 	if(!isset($_POST['iproname'])){
+		$_SESSION['num']=1;
+		$pageNum=$_GET['pageNum']??'1';
+		$pageSize=6;
 		//商品传值
-		$sql="select * from products where Pstatus=1";
+		$sql = "select * from products where Pstatus=1 limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
+		// $sql="select * from products where Pstatus=1";
+		$countsql = "select count(Pname) from products where Pstatus=1";
 		$_SESSION['iproname']='';
 		$product=db_fetch_all($sql);
+		$count = db_fetch_all($countsql);
 		require "index_html.php";
 	}
 	else if(isset($_POST['iproname'])){
 		$word=$_POST['iproname'];
 		$_SESSION['iproname']=$word;
-		$sql="select * from products where Pname like '%$word%' and Pstatus=1";
+		$_SESSION['num']=1;
+		$pageNum=$_GET['pageNum']??'1';
+		$pageSize=6;
+		$sql = "select * from products where Pstatus=1  limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
+		// $sql="select * from products where Pname like '%$word%' and Pstatus=1";
+		$countsql = "select count(Pname) from products where Pstatus=1";
 		$product=db_fetch_all($sql);
+		$count = db_fetch_all($countsql);
 		// require "main.html";
 		require "index_html.php";
 	}
