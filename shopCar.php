@@ -76,6 +76,12 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
 
     // 终止脚本
     exit;
+}else if(isset($_GET['action']) && $_GET['action'] == 'ctask'){
+	// 跳转到任务完成页面
+    header('Location: ctask.php');
+
+    // 终止脚本
+    exit;
 }
 //如果有选中任务加入待接单列表
 else if(isset($_SESSION['pid'])){

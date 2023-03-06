@@ -78,13 +78,60 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.php">跑腿锻炼，你上你也行 <span class="sr-only">(current)</span></a></li>
-					<li><a href="" class="">当前用户：<span>
+					<li>
+						<a data-toggle="modal" href="#myModal1" class="btn  btn-large">当前用户：<span>
 								<?php
 			        		$uno1=$_SESSION['usersinfo'];
 							$uno=$uno1['Uno'];
 			        		echo "$uno";  	
 			        	?>
-							</span></a></li>
+							</span></a>
+						<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<!-- 模态框头部 -->
+									<div class="modal-header">
+										<h4 class="modal-title">个人资料</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<!-- 模态框主体 -->
+									<div class="modal-body">
+										<form method="post" action="index.php">
+											账号名称：<span>
+												<?php
+			        		$uno1=$_SESSION['usersinfo'];
+									$uno=$uno1['Uno'];
+			        		echo "$uno";  	
+			        	?>
+											</span><br>
+											邮箱地址：<span>
+												<?php	
+									$email=$uno1['email'];
+			        		echo "$email";  	
+			        	?>
+											</span><br>
+											钱包数额：<span>
+												<?php	
+									$money=$uno1['money'];
+			        		echo "$money";  	
+			        	?>
+											</span><br>
+									</div>
+
+									<!-- 模态框底部 -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+										<!-- <button type="submit" class="btn btn-secondary" data-dismiss="modal">提交</button> -->
+										<a onClick="location.href='http://www.jiaren.com/resetPassword_html.php'"
+											class="btn btn-default form-btn">修改密码</a>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</li>
 					<li>
 						<a href="?action=shopCar">已接单列表
 							<span id="">(
@@ -96,6 +143,9 @@
 			       	}?>
 								)
 							</span></a>
+					</li>
+					<li>
+						<a href="?action=ctask">已完成确认</a>
 					</li>
 
 					<li><a href="?action=sendtask" class="">发布任务

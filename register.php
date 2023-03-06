@@ -76,7 +76,7 @@ $password = md5($salt . md5($password));
 echo "<script>alert('用户 $uno 创建成功，请登陆 ');</script>";
 
 // 拼接SQL语句
-$sql = "insert into `cu_user` (`uno`,`password`,`salt`,`email`) values ('$uno','$password','$salt','$email')";
+$sql = "insert into `cu_user` (`uno`,`password`,`salt`,`email`,`money`) values ('$uno','$password','$salt','$email',0)";
 
 // 执行SQL语句
 $rst = mysqli_query(db_init(), $sql);

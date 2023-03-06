@@ -68,6 +68,13 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
     // 终止脚本
     exit;
 }
+else if(isset($_GET['action']) && $_GET['action'] == 'ctask'){
+	// 跳转到任务完成页面
+    header('Location: ctask.php');
+
+    // 终止脚本
+    exit;
+}
 //如果有get传值pid的话
 if(isset($_GET['pid'])){
 	$temp=$_GET['pid'];
@@ -135,4 +142,7 @@ else{
 	echo "<script>alert('对不起，你还没有登陆');</script>";
 	require "login_html.php";
 }
+
+
+
 ?>

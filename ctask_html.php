@@ -96,8 +96,7 @@
 									$money=$uno1['money'];
 			        		echo "$money";  	
 			        	?>
-											</span> <a onClick="location.href='recharge_html.php'"
-											class="btn btn-default form-btn">充值</a><br>
+											</span><br>
 									</div>
 
 									<!-- 模态框底部 -->
@@ -145,37 +144,40 @@
 	</nav>
 		
 		<div id="mid">
-			<form action="pay.php" method="post">
-			<?php if(!isset($shopCarProductArr)){?>
+			<?php if(!isset($cpro)){?>
 				<div class="oneGood" >
-					<h3>待接单<h3>
+					<h3>没有待确认任务<h3>
 				</div>
 			<?php } else { ?>
 				<div class="good_total">
-			<?php foreach($shopCarProductArr as $key =>$v): ?>
+			<?php foreach($cpro as $key =>$v): ?>
 			<div class="good">			
 				<input type="hidden" name="hid" id="hid" value="<?php echo $key;?>" />
-				<input type="hidden" name="hidPid" id="hidPid" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
+				<input type="hidden" name="hidPid" id="hidPid" value="<?php echo $cpro[$key]["Pid"];?>" />
 				<div class="oneGood" >
-					<img  src="yuansheng_houtai/Public/Uploads/<?php echo $shopCarProductArr[$key]["PIMG"] ?>" width="300px" height="300px"/>
+					<img  src="yuansheng_houtai/Public/Uploads/<?php echo $cpro[$key]["PIMG"] ?>" width="300px" height="300px"/>
 					
 					<div class="GoodName">
-						<button class="btn-xs"><a href="shopCar.php?
-					 	hid=<?php echo $key;?>
-					 	&&hidPid=<?php echo $shopCarProductArr[$key]["Pid"];?>
-					 	">放弃任务</a></button> <br>
+						<button class="btn-xs"><a href="ctask.php?
+					 	chid=<?php echo $key;?>
+					 	&&chidPid=<?php echo $cpro[$key]["Pid"];?>
+					 	">取消完成</a></button> 
+						<button class="btn-xs"><a href="ctask.php?
+					 	cfhid=<?php echo $key;?>
+					 	&&chidPid=<?php echo $cpro[$key]["Pid"];?>
+					 	">完成</a></button><br>
 						发 布 人：&nbsp&nbsp
-					<?php echo $shopCarProductArr[$key]["Puser"] ?><br>
+					<?php echo $cpro[$key]["Puser"] ?><br>
 					任务详情:&nbsp&nbsp&nbsp&nbsp
-					<?php echo $shopCarProductArr[$key]["Pname"] ?><br>
+					<?php echo $cpro[$key]["Pname"] ?><br>
 					配送地址:&nbsp&nbsp&nbsp&nbsp
-					<?php echo $shopCarProductArr[$key]["Pword"] ?>
+					<?php echo $cpro[$key]["Pword"] ?>
 					 
 					<!--该商品id-->
-					<input type="hidden" name="pid[]" id="" value="<?php echo $shopCarProductArr[$key]["Pid"];?>" />
+					<input type="hidden" name="pid[]" id="" value="<?php echo $cpro[$key]["Pid"];?>" />
 			
 					<div class="oneMoney">
-						单份价格：&nbsp&nbsp&nbsp<span class="aMoney"><?php echo $shopCarProductArr[$key]["Ptotal"] ?></span>
+						单份价格：&nbsp&nbsp&nbsp<span class="aMoney"><?php echo $cpro[$key]["Ptotal"] ?></span>
 					</div>
 					<div class="numAndHow">
 						任务数量：&nbsp&nbsp <span class="shopNum" name="shopNum[]" id="shopNum" value="" >1</span>
@@ -183,29 +185,11 @@
 						<!-- <input class="jian" type="button" name="jian" id="jian" value="-" />
 						<input class="jia" type="button" name="jia" id="jia" value="+" /> -->
 					</div>
-					<div class="sumMoney">
-						任务总价：&nbsp&nbsp<span class="sumMoneyWord">
-							<?php echo  $shopCarProductArr[$key]["Ptotal"] ?>
-							</span>
-					</div>	
 				</div>
 					</div>
 			</div>
 				<?php endforeach; ?>
 					</div>
-				<div class="sumTotal">
-					<h5> 
-					共<span id="sumTotalNum"> <?php echo sizeof($shopCarProductArr);?></span>
-					 个跑腿任务 ，总价： <span id="sumTotalWord"> 
-					<?php $sum=0;
-					foreach($shopCarProductArr as $key2 =>$v2){
-						$sum=$sum+$shopCarProductArr[$key2]["Ptotal"];
-					}echo $sum;	?>
-						</span> 元
-					<br />
-					<input type="submit" name="SsumTotal" id="SsumTotal" value="完成任务"/> </h5>
-				</div>
-			</form>
 			<?php }?>
 		</div>
 	</body>

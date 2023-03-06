@@ -45,7 +45,7 @@ unset($_SESSION['checkcode_code']); //清除SESSION数据
         $uno = db_escape($uno);
 
         // 根据用户名取出用户信息
-        $sql = "select `Uid`,`Uno`,`password`,`salt` from `cu_user` where `uno`='$uno'";
+        $sql = "select `Uid`,`Uno`,`password`,`salt`,`email`,`money` from `cu_user` where `uno`='$uno'";
 						
         if ($rst = mysqli_query(db_init(), $sql)) {  // 执行SQL，获得结果集
             $row = mysqli_fetch_assoc($rst);     // 处理结果集
@@ -59,8 +59,9 @@ unset($_SESSION['checkcode_code']); //清除SESSION数据
                 session_start();
                 $_SESSION['usersinfo'] = array(
                     'Uno' => $row['Uno'],      // 将用户名字保存到SESSION
-                    'Uid' => $row['Uid']
-                    
+                    'Uid' => $row['Uid'],
+                    'email' => $row['email'],
+                    'money' => $row['money']
                 );
 			
 				

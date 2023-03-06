@@ -59,6 +59,12 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
 
     // 终止脚本
     exit;
+}else if(isset($_GET['action']) && $_GET['action'] == 'ctask'){
+	// 跳转到任务完成页面
+    header('Location: ctask.php');
+
+    // 终止脚本
+    exit;
 }
 //如果有get传值article_id的话
 if(isset($_GET['article_id'])){

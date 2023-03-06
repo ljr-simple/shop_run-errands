@@ -68,49 +68,53 @@ else if(isset($_GET['action']) && $_GET['action'] == 'order'){
     exit;
 }
 
-//当资料都填齐的话
-if(isset($_POST['pname'])&&isset($_POST['ptotal'])&&isset($_POST['pword'])&&isset($_FILES['pic'])){
-	$pname=$_POST['pname'];
-	$ptotal=$_POST['ptotal'];
-	$pword=$_POST['pword'];
-	$puser=$_SESSION['usersinfo']['Uno'];
-	$p=$_FILES['pic'];
-	$pimg=$p['name'];
-	$rst=FALSE;
-	
-	//获取上传文件的类型
-	$type=substr(strrchr($pimg, '.'), 1);
-	//判断上传文件类型
-	//当为jpg或者是png的时候
-	if($type=='jpg'||$type=='png'){
-		//移动数据			
-		move_uploaded_file($p['tmp_name'],iconv("UTF-8","gb2312",'yuansheng_houtai/Public/Uploads/'.$pimg));
-		$sql="insert into products(Pname,Ptotal,Pword,PIMG,Puser,Pstatus) values('$pname',$ptotal,'$pword','$pimg','$puser',1);";
-		$rst=mysqli_query(db_init(), $sql);	
-	}
-	else{
-		echo "上传的图片不为png或者jpg格式，请重新输入，3秒后返回";
-		header("refresh:3;url=sendtask.php");
-	}
-	
-	
-	if($rst){
-		header("refresh:0;url=addtask.php");
-	}
-	else{
-		echo "资料没填满或者未知错误,3秒后返回添加界面";
-		header("refresh:3;url=sendtask.php");
-	}			
-}
+
 
 //如果有session记录的话
 if(isset($_SESSION['usersinfo'])){
-	//文章传值
-	$uid=$_SESSION['usersinfo']['Uid'];
-	require "sendtask_html.php";
+	//完成任务的话
+	$uno1=$_SESSION['usersinfo'];
+	$uno=$uno1['Uno'];
+	// $mon = $_SESSION['money'];
+	$sql = "select * from products where Pstatus=2 and Puser='$uno'";
+	$cpro=db_fetch_all($sql);
+	if( isset($_GET['chidPid'])){
+		$pid=$_GET['chidPid'];
+		if(isset($_GET['cfhid'])){
+			$sql1="update  products set Pstatus=0 where pid='$pid'";
+			$rst=mysqli_query(db_init(), $sql1);
+			unset($_GET['cfhid']);
+			unset($_GET['chid']);
+			unset($_GET['chidPid']);
+		}
+		else if(isset($_GET['chid'])){
+			$sql_find_mon="select Ototal_Amount,Uid from orders where pid=$pid";
+			$res=db_fetch_all($sql_find_mon);
+			// var_dump($res);
+			// exit;
+			$mon=intval($res[0]['Ototal_Amount']??0);
+			$uid=$res[0]['Uid']??1;
+
+			//更新session
+			// $uno1=$_SESSION['usersinfo'];
+			// $uno=$uno1['Uno'];
+			// $_SESSION['usersinfo']['money'] -=$mon;
+
+			$sql4="update cu_user set money=money-$mon where Uid=$uid";
+			$sql3="delete from orders where pid='$pid'";
+			$sql2="update products set Pstatus=1 where pid='$pid'";
+			$rst2=mysqli_query(db_init(), $sql2);
+			$rst3=mysqli_query(db_init(), $sql3);
+			$rst4=mysqli_query(db_init(), $sql4);
+			unset($_GET['chid']);
+			unset($_GET['chidPid']);
+		}
+	}
+	require "ctask_html.php";
 	
 }else{
 	echo "<script>alert('对不起，你还没有登陆');</script>";
 	require "login_html.php";
 }
+
 ?>

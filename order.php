@@ -38,6 +38,12 @@ else if(isset($_GET['action']) && $_GET['action'] == 'admin') {
 		header('Location: http://www.lshop.com/index.php');
 		// 终止脚本
 		exit;
+}else if(isset($_GET['action']) && $_GET['action'] == 'ctask'){
+	// 跳转到任务完成页面
+    header('Location: ctask.php');
+
+    // 终止脚本
+    exit;
 }
 
 //点击购物车的时候

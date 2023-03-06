@@ -22,18 +22,11 @@ if(isset($_POST['pid'])){
 		$sql="select Ptotal from products where Pid = '$pid'";
 		$oneSale=db_fetch_column($sql);
 		$oneTotal=(int)$num*(float)$oneSale;
-		// $_SESSION['money']=$oneTotal;
+		
 		$sql="insert into orders(Uid,Pid,number,Ototal_Amount,Otime) VALUES($uid,$pid,$num,$oneTotal,NOW());";
 		$rst=mysqli_query(db_init(), $sql);
-		//更新session
-  	$uno1=$_SESSION['usersinfo'];
-		$uno=$uno1['Uno'];
-  	$_SESSION['usersinfo']['money'] +=$oneTotal;
-
 		$sql1="update  products set Pstatus=2 where pid='$pid'";
-		$sql2="update cu_user set money=money+$oneTotal where Uid=$uid";
 		$rst1=mysqli_query(db_init(), $sql1);
-		$rst2=mysqli_query(db_init(), $sql2);
 
 	}
 	unset($_SESSION['pid']);
