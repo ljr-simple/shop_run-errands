@@ -179,5 +179,11 @@ if(isset($_GET['acid'])){
 		require "login_html.php";
 	}
 }
-// var_dump($_GET);
+
+//获取分类号
+// $sql="select * from cats";
+// $cats=db_fetch_all($sql);
+// $_SESSION['cats']=$cats;
+
+// var_dump($cats);
 ?>

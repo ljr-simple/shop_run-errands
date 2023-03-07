@@ -251,11 +251,17 @@
     <div class="content">
         <div class="nav-classify">
             <ul class="nav nav-pills nav-stacked">
-                <li class="cla" role="presentation" class="active" value="1" ><a href="?acid=1" style="text-decoration:none" >热门推荐</a></li>
-                <li class="cla" role="presentation" value="2"><a href="?acid=2" style="text-decoration:none"  >生活趣事</a></li>
+                <?php 
+                    $sql="select * from cats";
+                    $cats=db_fetch_all($sql);
+                    foreach($cats as $key=> $v):
+                ?>
+                <li class="cla" role="presentation" class="active" value="<?php echo $cats[$key]['c_id'] ?>" ><a href="?acid=<?php echo $cats[$key]['c_id'] ?>" style="text-decoration:none" ><?php echo $cats[$key]['c_name'] ?></a></li>
+                <!-- <li class="cla" role="presentation" value="2"><a href="?acid=2" style="text-decoration:none"  >生活趣事</a></li>
                 <li class="cla" role="presentation" value="3"><a href="?acid=3" style="text-decoration:none">平台建议</a></li>
                 <li class="cla" role="presentation" value="4" ><a href="?acid=4" style="text-decoration:none">排忧解难</a></li>
-                <li class="cla" role="presentation" value="5"><a href="?acid=5" style="text-decoration:none" >跑腿交流</a></li>
+                <li class="cla" role="presentation" value="5"><a href="?acid=5" style="text-decoration:none" >跑腿交流</a></li> -->
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="a_con">
