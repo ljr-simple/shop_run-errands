@@ -77,11 +77,14 @@ if(isset($_POST['pname'])&&isset($_POST['ptotal'])&&isset($_POST['pword'])&&isse
 	$p=$_FILES['pic'];
 	$pimg=$p['name'];
 	$rst=FALSE;
-	
+	if(!$pimg)	
+		$pimg = 'deftask.jpg';
 	//获取上传文件的类型
 	$type=substr(strrchr($pimg, '.'), 1);
 	//判断上传文件类型
 	//当为jpg或者是png的时候
+	// echo $pimg;
+	// exit;
 	if($type=='jpg'||$type=='png'){
 		//移动数据			
 		move_uploaded_file($p['tmp_name'],iconv("UTF-8","gb2312",'yuansheng_houtai/Public/Uploads/'.$pimg));
@@ -90,6 +93,7 @@ if(isset($_POST['pname'])&&isset($_POST['ptotal'])&&isset($_POST['pword'])&&isse
 	}
 	else{
 		echo "上传的图片不为png或者jpg格式，请重新输入，3秒后返回";
+		var_dump($pimg);
 		header("refresh:3;url=sendtask.php");
 	}
 	

@@ -1,26 +1,28 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>校园跑腿后台管理-后台管理</title>
+	<meta charset="utf-8">
+	<title>校园跑腿后台管理-后台管理</title>
 </head>
 
 <body>
-<form method="post" action="">
-	
-	<div class="form-group">
-		<div class="field field-icon-right">
-		   <input type="text" class="input" name="ca_id"  />
-			<span class="icon icon-key"></span>
+	<form method="post" action="">
+
+		<div class="form-group">
+			<div class="field field-icon-right">
+				<input type="text" disabled="disabled" class="input" name="ca_id" value="<?=$info['ca_id']?>" />
+				<span class="icon icon-key"></span>
+			</div>
 		</div>
-	</div>
-   <div class="form-group">
-		<div class="field field-icon-right">
-		  <input type="file" class="input" name="carou" >
-			<span class="icon icon-camera"></span>
+		<div class="form-group">
+			<div class="field field-icon-right">
+				<input type="file" class="input" name="carou">
+				<span class="icon icon-camera"></span>
+			</div>
 		</div>
-	</div>
-	<input type="submit" value="提交">
-</form>
+		<input type="submit" value="提交">
+	</form>
 </body>
+
 </html>

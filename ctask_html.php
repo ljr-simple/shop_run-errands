@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>购物车</title>
+		<title>校园跑腿</title>
 		<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
 		<script src="js/shopCar.js" type="text/javascript" charset="utf-8"></script>
 	</head>

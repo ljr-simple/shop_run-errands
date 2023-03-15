@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <title>精品文章</title>
+    <title>校园跑腿</title>
 </head>
 <style>
     .fl{
@@ -35,13 +35,14 @@
         text-align:center;
     }
     .nav-classify{
+        display:flex;
         float:left;
         width:192px;
-        height:218px;
         margin-left:100px;
         border:5px solid grey;
         border-radius:10px 10px 10px 10px;
         text-align:center;
+        flex:1;
     }
     .content{
         width:100%;
@@ -59,6 +60,9 @@
     h3{
         display:inline-block;
         margin-top: 4px;
+    }
+    .nav-i{
+        width:100%;
     }
 </style>
 <body>
@@ -250,7 +254,7 @@
     </div>
     <div class="content">
         <div class="nav-classify">
-            <ul class="nav nav-pills nav-stacked">
+            <ul class="nav nav-pills nav-stacked nav-i">
                 <?php 
                     $sql="select * from cats";
                     $cats=db_fetch_all($sql);
@@ -353,7 +357,7 @@
         if(!id){            //默认id为1
             id=1;
         }
-        for(let i=0;i<5;i++){
+        for(let i=0;i<100;i++){
             var point = document.getElementsByClassName('cla')[i];
             // console.log(point.value);
             if(id==point.value){          //锁定当前分类标签

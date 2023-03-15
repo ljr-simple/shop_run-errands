@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>首页</title>
+	<title>校园跑腿</title>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -294,7 +294,7 @@
 					</a> </div>
 				<div>
 					<a href="" class="aword" style="text-decoration:none;color:#000;">
-						<h5>配送地址：</h5>
+						<h5>配送信息：</h5>
 						<?php echo $product[$key]["Pword"]  ?>
 					</a>
 				</div>

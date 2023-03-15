@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>发布任务</title>
+	<title>校园跑腿</title>
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <style>
@@ -173,7 +173,7 @@
 			<input type="text" class="form-control" id="exampleInputPassword1" name="ptotal" value="">
 		</div>
 		<div class="form-group">
-			<label for="exampleInputPassword1">配送地址：</label>
+			<label for="exampleInputPassword1">配送信息：(请给出必要信息，如手机号，地点等)</label>
 			<textarea class="form-control" id="exampleInputPassword1" name="pword" id="pword" rows="3"
 				style="width:100%;"></textarea>
 		</div>

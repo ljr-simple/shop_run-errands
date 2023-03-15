@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-02-18 15:19:16
+/* Smarty version 3.1.32, created on 2023-03-15 13:36:59
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\bulletin_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_63f0ec7467db68_79066058',
+  'unifunc' => 'content_6411c9fbd4ad98_12365157',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a09da68c171654f717c3d6a755ee842c6baacdad' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\bulletin_list.html',
-      1 => 1676733553,
+      1 => 1678887416,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_63f0ec7467db68_79066058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6411c9fbd4ad98_12365157 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -39,33 +39,40 @@ function content_63f0ec7467db68_79066058 (Smarty_Internal_Template $_smarty_tpl)
             <div class="panel admin-panel">
                 <div class="panel-head"><strong>综合管理</strong></div>
                 <div class="padding border-bottom">
-                    <input type="button" class="button button-small border-green" value="轮播图管理"
-                        onClick="location.href='index.php?p=Admin&c=Bulletin&a=editc'" /> <input type="button"
+                    <input type="button" class="button button-small border-green" value="轮播图添加"
+                        onClick="location.href='index.php?p=Admin&c=Bulletin&a=addc'" /> <input type="button"
                         class="button button-small border-green" value="公告管理"
                         onClick="location.href='index.php?p=Admin&c=Bulletin&a=editg'" />
                 </div>
-                <!-- <table class="table table-hover">
-        	<tr>
-        	  <th width="45">编号</th><th width="*">名称</th><th width="100">操作</th></tr>
-            <?php
+                <table class="table table-hover">
+                    <tr>
+                        <th width="180">编号</th>
+                        <th width="*">图片</th>
+                        <th width="100">操作</th>
+                    </tr>
+                    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['list']->value, 'rows');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['rows']->value) {
 ?>
-            <tr>
-            <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['c_id'];?>
-</td><td><?php echo $_smarty_tpl->tpl_vars['rows']->value['c_name'];?>
+                    <tr>
+                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['ca_id'];?>
 </td>
-            <td><a class="button border-blue button-little" href="index.php?p=Admin&c=cat&a=edit&c_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['c_id'];?>
-">修改</a> 
-            <a class="button border-yellow button-little" href="index.php?p=Admin&c=cat&a=del&c_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['c_id'];?>
+                        <td><img src="/Public/Uploads/<?php echo $_smarty_tpl->tpl_vars['rows']->value['ca_img'];?>
+" width="25px" height="25px"></td>
+                        <td><a class="button border-blue button-little"
+                                href="index.php?p=Admin&c=Bulletin&a=editc&ca_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['ca_id'];?>
+">修改</a>
+                            <a class="button border-yellow button-little"
+                                href="index.php?p=Admin&c=Bulletin&a=delc&ca_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['ca_id'];?>
 " onclick="">删除</a>
-            </td></tr>
-            <?php
+                        </td>
+                    </tr>
+                    <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        </table> -->
+                </table>
             </div>
         </form>
         <br />

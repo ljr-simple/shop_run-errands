@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>忘记密码</title>
+<title>校园跑腿</title>
 <link rel="stylesheet" type="text/css" href="./css/admin.css"/>
 <link rel="stylesheet" type="text/css" href="./css/pintuer.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
