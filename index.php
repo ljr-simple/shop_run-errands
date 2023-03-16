@@ -117,6 +117,10 @@ if(isset($_SESSION['usersinfo'])){
 		//商品传值
 		$sql = "select * from products where Pstatus=1 limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
 		// $sql="select * from products where Pstatus=1";
+		$sql_ca="select * from carousel";
+		$sql_bu="select * from bulletin";
+		$bulletin=db_fetch_all($sql_bu);
+		$carousel=db_fetch_all($sql_ca);
 		$countsql = "select count(Pname) from products where Pstatus=1";
 		$_SESSION['iproname']='';
 		$product=db_fetch_all($sql);
@@ -129,9 +133,13 @@ if(isset($_SESSION['usersinfo'])){
 		$_SESSION['num']=1;
 		$pageNum=$_GET['pageNum']??'1';
 		$pageSize=6;
-		$sql = "select * from products where Pstatus=1  limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
+		$sql = "select * from products where Pname like '%$word%' and Pstatus=1  limit " . (($pageNum - 1) * $pageSize) . "," . $pageSize;			//显示任务
 		// $sql="select * from products where Pname like '%$word%' and Pstatus=1";
 		$countsql = "select count(Pname) from products where Pstatus=1";
+		$sql_ca="select * from carousel";
+		$carousel=db_fetch_all($sql_ca);
+		$sql_bu="select * from bulletin";
+		$bulletin=db_fetch_all($sql_bu);
 		$product=db_fetch_all($sql);
 		$count = db_fetch_all($countsql);
 		// require "main.html";

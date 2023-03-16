@@ -5,24 +5,61 @@
 	<meta charset="utf-8">
 	<title>校园跑腿后台管理-后台管理</title>
 </head>
+<link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
+<link rel="stylesheet" href="/Public/Admin/css/admin.css">
 
 <body>
-	<form method="post" action="">
+	<div class="admin">
+		<div class="tab">
+			<div class="tab-head"> <strong>轮播图修改</strong>
+				<ul class="tab-nav">
+					<li class="active"><a href="#tab-set">修改轮播图</a></li>
+				</ul>
+			</div>
+			<div class="tab-body"> <br />
+				<div class="tab-panel active" id="tab-set">
+					<form action="" method="post" enctype="multipart/form-data">
+						<div class="panel" style="width: 600px;">
+							<div class="panel-head"><strong>轮播图信息</strong></div>
+							<div class="panel-body" style="padding:30px;">
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<input type="text" class="input" name="ca_id" value="<?=$info['ca_id']?>" />
+										<span class="icon icon-user-md"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<input type="file" class="input" name="ca_img">
+										<span class="icon icon-camera"></span>
+									</div>
+								</div>
+							</div>
+							<div class="panel-foot text-center">
+								<input type="submit" class="button button-block bg-main text-big" style="margin: auto" value="修改" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <form method="post" action="" enctype="multipart/form-data">
 
 		<div class="form-group">
 			<div class="field field-icon-right">
-				<input type="text" disabled="disabled" class="input" name="ca_id" value="<?=$info['ca_id']?>" />
+				<input type="text" class="input" name="ca_id" value="<?=$info['ca_id']?>" />
 				<span class="icon icon-key"></span>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="field field-icon-right">
-				<input type="file" class="input" name="carou">
+				<input type="file" class="input" name="ca_img">
 				<span class="icon icon-camera"></span>
 			</div>
 		</div>
 		<input type="submit" value="提交">
-	</form>
+	</form> -->
 </body>
 
 </html>

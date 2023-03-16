@@ -34,11 +34,17 @@ class BulletinController extends BaseController{
             if($filepath=$upload->uploadOne($_FILES['ca_img'])){
                 //生成缩略图
                 $image=new \Lib\Image();
-                $_POST['ca_img']=$image->thumb($path.$filepath,'s1_');
+                $_POST['ca_img']=$image->carousel($path.$filepath); 
+                // var_dump($_POST);
+                // exit;
             }else{
                 $_POST['ca_img']=$info['ca_img'];
+                // var_dump($_POST);
+                // exit;
             }
             $_POST['ca_id']=$caid;
+            // var_dump($_POST);
+            // exit;
             if($model->update($_POST))
                 $this->success ('index.php?p=Admin&c=Bulletin&a=list', '修改成功');
             else
@@ -48,13 +54,45 @@ class BulletinController extends BaseController{
     }
     //修改公告内容
     public function editgAction(){
+        $model=new \Core\Model('bulletin');
         if(!empty($_POST)){
-            $model=new \Core\Model('bulletin');
-            if($model->insert($_POST))
+            $_POST['bu_id'] = 1;
+            if($model->update($_POST))
                 $this->success ('index.php?p=Admin&c=Bulletin&a=list', '修改成功');
             else
                 $this->error ('index.php?p=Admin&c=Bulletin&a=editg', '修改失败');
         }
         require __VIEW__.'bulletin_editg.html';
+    }
+    //添加轮播图
+    public function addcAction(){
+        // if($_POST){
+        //     echo 123;
+        //     var_dump($_FILES['ca_img']['name']);
+        //     exit;
+        // }
+        if($_POST){
+            $model=new \Core\Model('carousel');
+            $path=$GLOBALS['config']['app']['path'];
+            $size=$GLOBALS['config']['app']['size'];
+            $type=$GLOBALS['config']['app']['type'];
+            $upload=new \Lib\Upload($path, $size, $type);
+            // echo $_FILES['ca_img'];
+            // exit;
+            if($filepath=$upload->uploadOne($_FILES['ca_img'])){
+                //生成缩略图
+                $image=new \Lib\Image();
+                $_POST['ca_img']=$image->carousel($path.$filepath);
+            }else{
+                $this->error('index.php?p=Admin&c=Bulletin&a=addc', $upload->getError());
+            }
+            if($model->insert($_POST))
+                $this->success ('index.php?p=Admin&c=Bulletin&a=list', '插入成功');
+            else
+                $this->error ('index.php?p=Admin&c=Bulletin&a=addc', '插入失败');
+        }
+        // var_dump($_POST);
+        // exit;
+        require __VIEW__.'bulletin_addc.html';
     }
 }

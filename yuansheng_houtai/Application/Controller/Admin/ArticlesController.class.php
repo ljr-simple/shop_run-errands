@@ -23,6 +23,12 @@ class ArticlesController extends BaseController{
     }
     //添加文章
     public function addAction(){
+        $model_cats=new \Core\Model('cats');
+        $list_cats=$model_cats->select();
+        $_SESSION['list_cats'] = $list_cats;
+        // var_dump($list_cats);
+        // exit;
+        // $this->smarty->assign('list_cats',$list_cats);
         if(!empty($_POST)){
             $model=new \Core\Model('articles');
             $_POST['article_btime']=date('Y-m-d H:i:s', time());

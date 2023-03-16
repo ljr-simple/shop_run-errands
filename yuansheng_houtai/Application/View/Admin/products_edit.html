@@ -1,21 +1,85 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>校园跑腿后台管理-后台管理</title>
+	<meta charset="utf-8">
+	<title>校园跑腿后台管理-后台管理</title>
 </head>
+<link rel="stylesheet" href="/Public/Admin/css/pintuer.css">
+<link rel="stylesheet" href="/Public/Admin/css/admin.css">
+<style>
+	.btn {
+		margin-left: 150px;
+	}
+
+	.form-group {
+		height: 50px;
+	}
+</style>
 
 <body>
-<form method="post" action="" enctype="multipart/form-data">
+	<div class="admin">
+		<div class="tab">
+			<div class="tab-head"> <strong>任务管理</strong>
+				<ul class="tab-nav">
+					<li class="active"><a href="#tab-set">修改任务</a></li>
+				</ul>
+			</div>
+			<div class="tab-body"> <br />
+				<div class="tab-panel active" id="tab-set">
+					<form action="" method="post" enctype="multipart/form-data">
+						<div class="panel" style="width: 600px;">
+							<div class="panel-head"><strong>任务信息</strong></div>
+							<div class="panel-body" style="padding:30px;">
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<span>跑腿详情：&nbsp</span><input type="text" class="input" name="Pname" value="<?=$info['Pname']?>"
+											style="width: 460px;float: right;" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<span>价 格：&nbsp</span><input type="text" class="input" name="Ptotal" value="<?=$info['Ptotal']?>"
+											style="width: 460px;float: right;" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<span>发布人：</span><input type="text" class="input" name="Puser" style="width: 460px;float: right;"
+											value="<?=$info['Puser']?>" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="field field-icon-right">
+										<span>图 片：&nbsp</span><input type="file" class="input" name="PIMG"
+											style="width: 460px;float: right;">
+									</div>
+								</div>
+								<div class="form-group"><span>配送信息：</span>
+									<div class="field field-icon-right">
+										<textarea name="Pword" cols="61" rows="2" style="float: right;"><?=$info['Pword']?></textarea>
+									</div>
+								</div>
+							</div>
+							<div class=" panel-foot text-center">
+								<input type="submit" class="button button-block bg-main text-big" style="margin: auto" value="发布任务" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <form method="post" action="" enctype="multipart/form-data">
 	名称： <input type="text" name="Pname" value='<?=$info['Pname']?>'> <br />
 	价格： <input type="text" name="Ptotal" value='<?=$info['Ptotal']?>'> <br />
 	发布人： <input type="text" name="Puser" value='<?=$info['Puser']?>'> <br />
 	图片： <input type="file" name="PIMG"> <br />
 	简介： <textarea  name="Pword" cols="40" rows="10"><?=$info['Pword']?> </textarea><br />
-	<!--
 	<input type="hidden" name="proID" value=<?=$info['proID']?>>
-	-->
 	<input type="submit" value="提交">
-</form>
+	</form> -->
 </body>
+
 </html>

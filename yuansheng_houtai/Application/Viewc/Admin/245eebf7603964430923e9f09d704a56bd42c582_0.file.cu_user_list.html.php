@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-03-16 08:21:53
-  from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\user_list.html' */
+/* Smarty version 3.1.32, created on 2023-03-16 08:53:27
+  from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\cu_user_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_6412d1a1e89ad2_99358045',
+  'unifunc' => 'content_6412d9075d8d41_81246102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '57047ca64560857ea1a10b4cf62048e05722c7ff' => 
+    '245eebf7603964430923e9f09d704a56bd42c582' => 
     array (
-      0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\user_list.html',
-      1 => 1678953760,
+      0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\cu_user_list.html',
+      1 => 1678956796,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6412d1a1e89ad2_99358045 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6412d9075d8d41_81246102 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -37,14 +37,13 @@ function content_6412d1a1e89ad2_99358045 (Smarty_Internal_Template $_smarty_tpl)
     <div class="admin">
         <form method="post">
             <div class="panel admin-panel">
-                <div class="panel-head"><strong>后台用户信息</strong></div>
+                <div class="panel-head"><strong>前台用户信息</strong></div>
                 <table class="table table-hover">
                     <tr>
-                        <th width="45">编号</th>
-                        <th width="*">姓名</th>
-                        <th width="*">用户头像</th>
-                        <th width="*">最后登陆时间</th>
-                        <th width="*">登录次数</th>
+                        <th width="120">编号</th>
+                        <th width="240">账号</th>
+                        <th width="280">邮箱</th>
+                        <th width="120">钱包</th>
                         <th width="100">操作</th>
                     </tr>
                     <?php
@@ -53,21 +52,19 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['rows']->value) {
 ?>
                     <tr>
-                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['user_id'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['Uid'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['user_name'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['Uno'];?>
 </td>
-                        <td><img src="/Public/Uploads/<?php echo $_smarty_tpl->tpl_vars['rows']->value['user_face'];?>
-" width="25px" height="25px"></td>
-                        <td><?php echo date("Y-m-d H:i:s",$_smarty_tpl->tpl_vars['rows']->value['user_login_time']);?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['email'];?>
 </td>
-                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['user_login_count'];?>
+                        <td><?php echo $_smarty_tpl->tpl_vars['rows']->value['money'];?>
 </td>
                         <td><a class="button border-yellow button-little"
-                                href="index.php?p=Admin&c=Users&a=edit&user_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['user_id'];?>
+                                href="index.php?p=Admin&c=cu_user&a=edit&Uid=<?php echo $_smarty_tpl->tpl_vars['rows']->value['Uid'];?>
 ">修改</a>&nbsp;
                             <a class="button border-yellow button-little"
-                                href="index.php?p=Admin&c=Users&a=del&user_id=<?php echo $_smarty_tpl->tpl_vars['rows']->value['user_id'];?>
+                                href="index.php?p=Admin&c=cu_user&a=del&Uid=<?php echo $_smarty_tpl->tpl_vars['rows']->value['Uid'];?>
 "
                                 onclick="return confirm('确认删除?')">删除</a>
                         </td>

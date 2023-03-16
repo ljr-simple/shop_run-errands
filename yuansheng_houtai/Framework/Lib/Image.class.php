@@ -17,4 +17,16 @@ class Image{
         imagejpeg($dst_img,$save_path);
         return "{$foldername}/{$prefix}{$filename}";    //2019-07-01/small_aa.jpg
     }
+    public function carousel($src_path,$w=800,$h=380){
+        $dst_img=imagecreatetruecolor($w,$h);   //目标图
+        $src_img=imagecreatefrompng($src_path);    //源图
+        $src_w=imagesx($src_img);
+        $src_h=imagesy($src_img);
+        imagecopyresampled($dst_img,$src_img,0,0,0,0,$w,$h,$src_w,$src_h);
+        $filename=basename($src_path);  //文件名    aa.jpg
+        $foldername=substr(dirname($src_path),-10); //目录名  2019-07-01
+        $save_path= dirname($src_path).'/'.$filename;   //  ./Public/Uploads/2019-07-01/aa.jpg
+        imagejpeg($dst_img,$save_path);
+        return "{$foldername}/{$filename}";    //2019-07-01/aa.jpg
+    }
 }

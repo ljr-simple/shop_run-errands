@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-03-15 13:36:59
+/* Smarty version 3.1.32, created on 2023-03-16 06:26:39
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\bulletin_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_6411c9fbd4ad98_12365157',
+  'unifunc' => 'content_6412b69f0a7446_52341682',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a09da68c171654f717c3d6a755ee842c6baacdad' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\bulletin_list.html',
-      1 => 1678887416,
+      1 => 1678947980,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6411c9fbd4ad98_12365157 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6412b69f0a7446_52341682 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 

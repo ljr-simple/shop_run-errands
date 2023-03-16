@@ -85,14 +85,14 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">跑腿锻炼，你上你也行<span class="sr-only">(current)</span></a></li>
                    <li>
-						<a data-toggle="modal" href="#myModal1" class="btn  btn-large">当前用户：<span>
+						<a data-toggle="modal" href="#myModal2" class="btn  btn-large">当前用户：<span>
 								<?php
 			        		$uno1=$_SESSION['usersinfo'];
 							$uno=$uno1['Uno'];
 			        		echo "$uno";  	
 			        	?>
 							</span></a>
-						<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+						<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 							aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">

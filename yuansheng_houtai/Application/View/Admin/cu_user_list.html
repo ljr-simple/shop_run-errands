@@ -14,27 +14,25 @@
     <div class="admin">
         <form method="post">
             <div class="panel admin-panel">
-                <div class="panel-head"><strong>后台用户信息</strong></div>
+                <div class="panel-head"><strong>前台用户信息</strong></div>
                 <table class="table table-hover">
                     <tr>
-                        <th width="45">编号</th>
-                        <th width="*">姓名</th>
-                        <th width="*">用户头像</th>
-                        <th width="*">最后登陆时间</th>
-                        <th width="*">登录次数</th>
+                        <th width="120">编号</th>
+                        <th width="240">账号</th>
+                        <th width="280">邮箱</th>
+                        <th width="120">钱包</th>
                         <th width="100">操作</th>
                     </tr>
                     {foreach $list as $rows}
                     <tr>
-                        <td>{$rows['user_id']}</td>
-                        <td>{$rows['user_name']}</td>
-                        <td><img src="/Public/Uploads/{$rows['user_face']}" width="25px" height="25px"></td>
-                        <td>{date("Y-m-d H:i:s",$rows['user_login_time'])}</td>
-                        <td>{$rows['user_login_count']}</td>
+                        <td>{$rows['Uid']}</td>
+                        <td>{$rows['Uno']}</td>
+                        <td>{$rows['email']}</td>
+                        <td>{$rows['money']}</td>
                         <td><a class="button border-yellow button-little"
-                                href="index.php?p=Admin&c=Users&a=edit&user_id={$rows['user_id']}">修改</a>&nbsp;
+                                href="index.php?p=Admin&c=cu_user&a=edit&Uid={$rows['Uid']}">修改</a>&nbsp;
                             <a class="button border-yellow button-little"
-                                href="index.php?p=Admin&c=Users&a=del&user_id={$rows['user_id']}"
+                                href="index.php?p=Admin&c=cu_user&a=del&Uid={$rows['Uid']}"
                                 onclick="return confirm('确认删除?')">删除</a>
                         </td>
                     </tr>

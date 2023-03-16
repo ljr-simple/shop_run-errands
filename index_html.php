@@ -175,8 +175,7 @@
 									$money=$uno1['money'];
 			        		echo "$money";  	
 			        	?>
-											</span> <a onClick="location.href='recharge_html.php'"
-											class="btn btn-default form-btn">充值</a><br>
+											</span> <a onClick="location.href='recharge_html.php'" class="btn btn-default form-btn">充值</a><br>
 									</div>
 
 									<!-- 模态框底部 -->
@@ -231,24 +230,38 @@
 	<div id="myCarousel" class="carousel slide">
 		<!-- 轮播（Carousel）指标 -->
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
+		<?php foreach($carousel as $key => $v): ?>
+			<li data-target="#myCarousel " data-slide-to="<?php echo $carousel[$key]['ca_id'] ?>" class="dot"></li>
+			<!-- <li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li> -->
+			
+			<?php endforeach; ?>
 		</ol>
 		<!-- 轮播（Carousel）项目 -->
 		<div class="carousel-inner">
-			<div class="item active">
-				<img src="images/11.png" alt="First slide" width="800px" height="380px">
+		<?php foreach($carousel as $key => $v): ?>
+			<div class="item">
+				<img src="yuansheng_houtai/Public/Uploads/<?php echo $carousel[$key]['ca_img'] ?>" alt="First slide"
+					width="800px" height="380px">
 				<div class="carousel-caption"></div>
 			</div>
-			<div class="item">
+			<script>
+				let item = document.querySelector('.item');
+				let dot = document.querySelector('.dot');
+				// console.log(item)
+				item.classList.add('active')
+				dot.classList.add('active')
+				// console.log(item.classList)
+			</script>
+			<!-- <div class="item">
 				<img src="images/22.png" alt="Second slide" width="800px" height="380px">
 				<div class="carousel-caption"></div>
 			</div>
 			<div class="item">
 				<img src="images/54.png" alt="Third slide" width="800px" height="380px">
 				<div class="carousel-caption"></div>
-			</div>
+			</div> -->
+			<?php endforeach; ?>
 		</div>
 		<!-- 轮播（Carousel）导航 -->
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -267,7 +280,8 @@
 		<div class="panel panel-default bullet">
 			<div class="panel-body">
 				<marquee><span id="but">公告：</span>
-					五月返乡，一切平安！</marquee>
+					<?php echo $bulletin[0]["b_text"] ?>
+				</marquee>
 			</div>
 		</div>
 	</div>
