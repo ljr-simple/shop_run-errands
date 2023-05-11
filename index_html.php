@@ -207,7 +207,7 @@
 					</li>
 					<li><a href="?action=sendtask" class="">发布任务
 						</a></li>
-					<li><a href="?action=article" class="">精品文章
+					<li><a href="?action=article" class="">论坛帖子
 						</a></li>
 					<li><a href="?action=order" class="">查看订单
 						</a></li>

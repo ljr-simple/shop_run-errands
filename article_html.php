@@ -157,7 +157,7 @@
                     
         <li><a href="?action=sendtask" class="">发布任务
 		</a></li>
-                    <li><a href="?action=article">精品文章
+                    <li><a href="?action=article">论坛帖子
                         </a></li>
                     <li><a href="?action=order" class="">查看订单
 		            </a></li>
@@ -173,22 +173,22 @@
    
         <div>
         <div class="title">
-            <h3>文章精选</h3>
-            <div class="sent_a"><a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-large">发布文章</a></div>
+            <h3>论坛帖子</h3>
+            <div class="sent_a"><a data-toggle="modal" href="#myModal1" class="btn btn-primary btn-large">发布帖子</a></div>
             <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                  
                       <!-- 模态框头部 -->
                       <div class="modal-header">
-                        <h4 class="modal-title">发布文章</h4>
+                        <h4 class="modal-title">发布帖子</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                         <!-- 模态框主体 -->
                         <div class="modal-body">
                             <form method="post" action="article.php">
-                            文章标题：<input type="text" class="form-control" name="article_name"><br>
-                            文章内容：<textarea class="form-control" rows="3" name="article_content"></textarea><br>
+                            帖子标题：<input type="text" class="form-control" name="article_name"><br>
+                            帖子内容：<textarea class="form-control" rows="3" name="article_content"></textarea><br>
                             所属类别：<div class="radio" >
                                 <label>
                                   <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>热门推荐
@@ -220,7 +220,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                             <!-- <button type="submit" class="btn btn-secondary" data-dismiss="modal">提交</button> -->
-                            <button type="submit" class="btn btn-default form-btn">发布文章</button>
+                            <button type="submit" class="btn btn-default form-btn">发布帖子</button>
                         </div>
                       </form>
                     </div>

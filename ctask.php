@@ -46,6 +46,12 @@ else if(isset($_GET['action']) && $_GET['action'] == 'shopCar'){
 
     // 终止脚本
     exit;
+}else if(isset($_GET['action']) && $_GET['action'] == 'sendtask'){
+	// 跳转到发布任务页面
+    header('Location: sendtask.php');
+
+    // 终止脚本
+    exit;
 }
 else if(isset($_GET['action']) && $_GET['action'] == 'article'){
 	// 跳转到购物车页面

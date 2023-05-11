@@ -75,7 +75,6 @@
                 </div>
             </div>
             </form>
-            <div class="text-right text-small text-gray padding-top">基于Person构建</div>
         </div>
     </div>
 </div>
