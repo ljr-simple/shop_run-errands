@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="./js/echarts.min.js"></script>
 </head>
 <style>
 	.carousel-inner img {
@@ -114,6 +115,50 @@
 		height: 40px;
 		margin: 0 auto;
 		display: block;
+	}
+
+	.weather-widget {
+		width: 306px;
+		height: 300px;
+		border: 1px solid #ffffff;
+		border-radius: 5px;
+		padding: 10px;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.weather-icon img {
+		width: 60px;
+		height: 60px;
+	}
+
+	.weather-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.weather-areas {
+		font-size: 30px;
+		font-weight: bolder;
+	}
+
+	.temperature {
+		font-size: 30px;
+		font-weight: bold;
+	}
+
+	.weather-condition {
+		font-size: 18px;
+	}
+
+	.weather-chart {
+		width: 160px;
+		height: 250px;
 	}
 </style>
 
@@ -226,20 +271,138 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+
+	<div class="weather-widget navbar-form navbar-left">
+		<div class="weather-icon">
+			<img src="" alt="天气图标">
+		</div>
+		<div class="weather-info">
+			<div class="weather-areas"></div>
+			<div class="temperature"></div>
+			<div class="weather-condition"></div>
+		</div>
+		<div class="weather-chart"></div>
+	</div>
+	<script>
+		// 获取天气数据
+		$.ajax({
+			url: 'https://v0.yiketianqi.com/api?unescape=1&version=v61&appid=64424157&appsecret=cBLdxE1X',
+			type: 'GET',
+			dataType: 'json',
+			success: function (data) {
+				// 解析JSON数据，获取需要展示的数据
+				console.log(data)
+				var temperature = data.tem;	//实时温度
+				var condition = data.wea;		//天气状况
+				var areas = data.city; //地区
+				$('.weather-icon img').attr('src', './images/weather/' + data.wea_img + '.png');
+				$('.temperature').text(temperature + '℃');
+				$('.weather-condition').text(condition);
+				$('.weather-areas').text(areas);
+
+
+				//获取前七天日期
+				var dateArray = []; // 用于保存前七天日期的数组
+				var today = new Date(); // 获取当前日期
+				for (var i = 0; i < 7; i++) {
+					var date = new Date(today.getTime() - i * 24 * 60 * 60 * 1000); // 计算前i天的日期
+					var year = date.getFullYear(); // 获取年份
+					var month = date.getMonth() + 1; // 获取月份（注意：月份从0开始，需要加1）
+					var day = date.getDate(); // 获取日期
+					var dateString = year + '-' + month + '-' + day; // 将年月日拼接成字符串
+					dateArray.push(dateString); // 将日期字符串存储到数组中
+				}
+				//倒序数组
+				var temp;
+				for (let i = 0; i < dateArray.length / 2; i++) {
+					temp = dateArray[i];
+					dateArray[i] = dateArray[dateArray.length - 1 - i];
+					dateArray[dateArray.length - 1 - i] = temp;
+				}
+				console.log(dateArray)
+
+				//获取七天内天气状况
+				// 获取天气数据
+				$.ajax({
+					url: 'https://v0.yiketianqi.com/api?unescape=1&version=v9&appid=64424157&appsecret=cBLdxE1X',
+					type: 'GET',
+					dataType: 'json',
+					success: function (data) {
+						// 解析JSON数据，获取需要展示的数据
+
+						//七天内的最高气温
+						var infoTemMax = Array();
+						data.data.forEach(item => {
+							infoTemMax.push(item.tem1);
+						});
+
+						//七天内的最低气温
+						var infoTemMin = Array();
+						data.data.forEach(item => {
+							infoTemMin.push(item.tem2);
+						});
+						// 绘制图表
+						var chart = echarts.init(document.querySelector('.weather-chart'));
+						var option = {
+							tooltip: {
+								trigger: 'axis',
+								axisPointer: { type: 'cross' }
+							},
+							legend: {},
+							xAxis: {
+								type: 'category',
+								data: dateArray
+							},
+							yAxis: {
+								show: false
+							},
+							series: [
+								{
+									data: infoTemMin,
+									type: 'line',
+									stack: 'x',
+									label: {
+										show: true,
+										position: 'top',
+									},
+								}, {
+									data: infoTemMax,
+									type: 'line',
+									stack: 'x',
+									label: {
+										show: true,
+										position: 'top',
+									},
+								}]
+						};
+						chart.setOption(option);
+					},
+					error: function (xhr, status, error) {
+						console.log('Ajax error: ' + error);
+					}
+				});
+			},
+			error: function (xhr, status, error) {
+				console.log('Ajax error: ' + error);
+			}
+		});
+
+
+	</script>
 	<!-- 轮播图 -->
 	<div id="myCarousel" class="carousel slide">
 		<!-- 轮播（Carousel）指标 -->
 		<ol class="carousel-indicators">
-		<?php foreach($carousel as $key => $v): ?>
+			<?php foreach($carousel as $key => $v): ?>
 			<li data-target="#myCarousel " data-slide-to="<?php echo $carousel[$key]['ca_id'] ?>" class="dot"></li>
 			<!-- <li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li> -->
-			
+
 			<?php endforeach; ?>
 		</ol>
 		<!-- 轮播（Carousel）项目 -->
 		<div class="carousel-inner">
-		<?php foreach($carousel as $key => $v): ?>
+			<?php foreach($carousel as $key => $v): ?>
 			<div class="item">
 				<img src="yuansheng_houtai/Public/Uploads/<?php echo $carousel[$key]['ca_img'] ?>" alt="First slide"
 					width="800px" height="380px">

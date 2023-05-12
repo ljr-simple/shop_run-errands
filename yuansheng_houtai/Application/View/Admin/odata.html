@@ -17,23 +17,88 @@
 
 <body>
   <script type="text/javascript" src="../../../Public/Admin/js/echarts.min.js"></script>
+  <script type="text/javascript" src="../../../Public/Admin/js/jquery.js"></script>
+
   <div class="box"></div>
   <script>
-    var myChart = echarts.init(document.querySelector('.box'));
-    var option = {
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    var box = document.querySelector('.box');
+    var myChart = echarts.init(box);
+
+    // 发送Ajax请求
+    $.ajax({
+      url: 'index.php?p=Admin&c=Odata&a=show',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        // 解析JSON数据，将其赋值给变量
+        var dailyAmountMap = data;
+        // 在此处进行数据可视化操作
+        var amountArray = Array();
+        var dateArray = Array();
+        // console.log(data);
+
+        //获取订单金额
+        for (const item in dailyAmountMap) {
+          amountArray.push(parseInt(dailyAmountMap[item]));
+          dateArray.push(item);
+          // console.log(item)
+        }
+        // console.log(amountArray)
+        // console.log(dateArray)
+
+        //获取前七天日期
+        // var dateArray = []; // 用于保存前七天日期的数组
+        // var today = new Date(); // 获取当前日期
+        // for (var i = 0; i < 7; i++) {
+        //   var date = new Date(today.getTime() - i * 24 * 60 * 60 * 1000); // 计算前i天的日期
+        //   var year = date.getFullYear(); // 获取年份
+        //   var month = date.getMonth() + 1; // 获取月份（注意：月份从0开始，需要加1）
+        //   var day = date.getDate(); // 获取日期
+        //   var dateString = year + '-' + month + '-' + day; // 将年月日拼接成字符串
+        //   dateArray.push(dateString); // 将日期字符串存储到数组中
+        // }
+
+        //折线图配置
+        var option = {
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'cross' }
+          },
+          legend: {},
+          xAxis: {
+            type: 'category',
+            axisTick: {
+              alignWithLabel: true
+            },
+            data: dateArray
+          },
+          yAxis: {
+            type: 'value',
+            name: '金额',
+            min: 0,
+            max: 2500,
+            position: 'left',
+          },
+          series: [{
+            data: amountArray,
+            type: 'line',
+            label: {
+              show: true,
+              position: 'top',
+            },
+            name: '金额',
+            smooth: true,
+          }]
+        };
+        myChart.setOption(option);
       },
-      yAxis: {
-        type: 'value'
-      },
-      series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-      }]
-    };
-    myChart.setOption(option);
+      error: function (xhr, status, error) {
+        console.log('Ajax error: ' + error);
+        console.log(1)
+      }
+    });
+
+
   </script>
 </body>
 
