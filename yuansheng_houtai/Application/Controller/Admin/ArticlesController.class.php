@@ -55,5 +55,52 @@ class ArticlesController extends BaseController{
         $info=$model->find($id);
         require __VIEW__.'articles_edit.html';
     }
+    //返回帖子阅读量
+    public function showAction(){
+        $model=new \Core\Model('articles');
+        $list=$model->select();
+        $cartAmountMap = array();
+        foreach ($list as $article) {
+            $name = $article['article_name'];    //获取帖子名称                       
+            // print_r($date);
+            if (!isset($cartAmountMap[$name])) {
+                $cartAmountMap[$name] = 0;
+            }
+            $cartAmountMap[$name] += $article['article_counts']; // 累加帖子浏览量
+        }
+        // exit;
+        header('Content-Type: application/json');
+        echo json_encode($cartAmountMap,true);
+    }
+
+    //返回帖子分类
+    public function cartshowAction(){
+        //获取article分类
+        $model=new \Core\Model('articles');
+        $list=$model->select();
+        $cartAmountMap = array();
+        foreach ($list as $article) {
+            $cid = $article['article_cid'];    //获取帖子分类ID                      
+            // print_r($date);
+            if (!isset($cartAmountMap[$cid])) {
+                $cartAmountMap[$cid] = 0;
+            }
+            $cartAmountMap[$cid] += 1; // 累加帖子分类数
+        }
+
+        //获取cats分类
+        $model=new \Core\Model('cats');
+        $cats=$model->select();
+
+
+        // exit;
+        header('Content-Type: application/json');
+        echo json_encode($cartAmountMap,true);
+    }
+
+    public function dataAysAction(){
+        $model = new \Core\Model('articles');
+        $this->smarty->display('article_show.html');
+    }
 
 }

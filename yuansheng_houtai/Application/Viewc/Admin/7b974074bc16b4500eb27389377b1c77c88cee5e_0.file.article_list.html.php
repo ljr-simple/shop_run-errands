@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-05-12 08:53:55
+/* Smarty version 3.1.32, created on 2023-05-13 13:15:56
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\article_list.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_645dfea38adf03_17144723',
+  'unifunc' => 'content_645f8d8c322453_27242250',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7b974074bc16b4500eb27389377b1c77c88cee5e' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\article_list.html',
-      1 => 1683729655,
+      1 => 1683983469,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_645dfea38adf03_17144723 (Smarty_Internal_Template $_smarty_tpl) {
+function content_645f8d8c322453_27242250 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -46,6 +46,8 @@ function content_645dfea38adf03_17144723 (Smarty_Internal_Template $_smarty_tpl)
             <div class="padding border-bottom">
                 <input type="button" class="button button-small border-green" value="添加帖子"
                     onClick="location.href='index.php?p=Admin&c=articles&a=add'" />
+                <input type="button" class="button button-small border-green" value="数据分析"
+                    onClick="location.href='index.php?p=Admin&c=articles&a=dataAys'" />
             </div>
             <table class="table table-hover" id="taaa">
                 <tr>

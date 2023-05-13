@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-05-12 09:39:39
+/* Smarty version 3.1.32, created on 2023-05-13 12:27:13
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\odata.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_645e095bb87254_64398151',
+  'unifunc' => 'content_645f8221756c34_48990976',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd270e534efc80dbbad360d83124c5754ac2e2cfa' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\odata.html',
-      1 => 1683884375,
+      1 => 1683890616,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_645e095bb87254_64398151 (Smarty_Internal_Template $_smarty_tpl) {
+function content_645f8221756c34_48990976 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -63,16 +63,16 @@ function content_645e095bb87254_64398151 (Smarty_Internal_Template $_smarty_tpl)
         // 在此处进行数据可视化操作
         var amountArray = Array();
         var dateArray = Array();
-        console.log(data);
+        // console.log(data);
 
         //获取订单金额
         for (const item in dailyAmountMap) {
           amountArray.push(parseInt(dailyAmountMap[item]));
           dateArray.push(item);
-          console.log(item)
+          // console.log(item)
         }
-        console.log(amountArray)
-        console.log(dateArray)
+        // console.log(amountArray)
+        // console.log(dateArray)
 
         //获取前七天日期
         // var dateArray = []; // 用于保存前七天日期的数组
@@ -85,8 +85,6 @@ function content_645e095bb87254_64398151 (Smarty_Internal_Template $_smarty_tpl)
         //   var dateString = year + '-' + month + '-' + day; // 将年月日拼接成字符串
         //   dateArray.push(dateString); // 将日期字符串存储到数组中
         // }
-
-
 
         //折线图配置
         var option = {
@@ -120,48 +118,7 @@ function content_645e095bb87254_64398151 (Smarty_Internal_Template $_smarty_tpl)
             smooth: true,
           }]
         };
-
-
-        // option = {
-        //   tooltip: {
-        //     trigger: 'axis',
-        //     axisPointer: { type: 'cross' }
-        //   },
-        //   legend: {},
-        //   xAxis: [
-        //     {
-        //       type: 'category',
-        //       axisTick: {
-        //         alignWithLabel: true
-        //       },
-        //       data: dateArray
-        //     }
-        //   ],
-        //   yAxis: [
-        //     {
-        //       type: 'value',
-        //       name: '金额',
-        //       min: 0,
-        //       max: 2500,
-        //       position: 'left',
-        //     }
-        //   ],
-        //   series: [
-        //     {
-        //       name: '金额',
-        //       type: 'line',
-        //       smooth: true,
-        //       yAxisIndex: 1,
-        //       data: amountArray
-        //     }
-        //   ]
-        // };
-
-
         myChart.setOption(option);
-
-
-
       },
       error: function (xhr, status, error) {
         console.log('Ajax error: ' + error);
