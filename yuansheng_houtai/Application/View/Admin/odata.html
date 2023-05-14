@@ -7,8 +7,8 @@
   <title>Echarts使用步骤</title>
   <style>
     .box {
-      width: 500px;
-      height: 500px;
+      width: 1400px;
+      height: 600px;
       background-color: white;
       margin: auto;
     }
@@ -60,6 +60,11 @@
 
         //折线图配置
         var option = {
+          title: {
+            text: "订单金额折线统计图",
+            x: 'center',
+            y: 'bottom'
+          },
           tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'cross' }

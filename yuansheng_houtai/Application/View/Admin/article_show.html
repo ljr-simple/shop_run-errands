@@ -6,10 +6,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Echarts使用步骤</title>
   <style>
-    .box {
-      width: 500px;
+    .all {
+      width: 100%;
       height: 500px;
       background-color: white;
+      display: flex;
+      flex-wrap: nowrap;
+      margin: auto;
+    }
+
+    .box {
+      width: 880px;
+      height: 500px;
+    }
+
+    .box1 {
+      width: 500px;
+      height: 500px;
+    }
+
+    .all div {
+      flex: 1;
+    }
+
+    .box2 {
+      width: 1200px;
+      height: 600px;
       margin: auto;
     }
   </style>
@@ -19,8 +41,15 @@
   <script type="text/javascript" src="../../../Public/Admin/js/echarts.min.js"></script>
   <script type="text/javascript" src="../../../Public/Admin/js/jquery.js"></script>
 
-  <div class="box"></div>
+  <div class="all">
+    <div class="box"></div>
+    <div class="box1"></div>
+  </div>
+  <div class="box2">
+  </div>
+
   <script>
+    //帖子浏览量
     var box = document.querySelector('.box');
     var myChart = echarts.init(box);
 
@@ -34,7 +63,7 @@
         // 在此处进行数据可视化操作
         var countArray = Array();
         var nameArray = Array();  //文章标题数组
-        console.log(data);
+        // console.log(data);
 
         //获取帖子阅读量
         for (const item in data) {
@@ -45,6 +74,11 @@
 
         //折线图配置
         var option = {
+          title: {
+            text: "帖子浏览量折线图",
+            x: 'center',
+            y: 'bottom'
+          },
           tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'cross' }
@@ -55,7 +89,10 @@
             axisTick: {
               alignWithLabel: true
             },
-            data: nameArray
+            data: nameArray,
+            axisLabel: {
+              fontSize: 10 // 字体大小，单位为px
+            }
           },
           yAxis: {
             type: 'value',
@@ -79,17 +116,12 @@
       },
       error: function (xhr, status, error) {
         console.log('Ajax error: ' + error);
-        console.log(1)
       }
     });
 
-
-  </script>
-
-  <div class="box"></div>
-  <script>
-    var box = document.querySelector('.box');
-    var myChart = echarts.init(box);
+    //帖子分类
+    var box1 = document.querySelector('.box1');
+    var myChart1 = echarts.init(box1);
 
     // 发送Ajax请求
     $.ajax({
@@ -99,44 +131,99 @@
       success: function (data) {
         // 解析JSON数据，将其赋值给变量
         // 在此处进行数据可视化操作
+        // console.log(data);
+        var catsArray = Array();
+        for (const item in data) {
+          let catsObject = {
+            value: 0,
+            name: ''
+          }
+          catsObject.name = item;
+          catsObject.value = data[item];
+          catsArray.push(catsObject);
+        }
+
+        // console.log(catsArray);
+        //折线图配置
+        var option = {
+          title: {
+            text: "帖子分类分布饼状图",
+            x: 'center',
+            y: 'bottom'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'cross' }
+          },
+          legend: {},
+          series: [
+            {
+              type: 'pie',
+              data: catsArray
+            }
+          ]
+        };
+        myChart1.setOption(option);
+      },
+      error: function (xhr, status, error) {
+        console.log('Ajax error: ' + error);
+      }
+    });
+
+
+    //帖子点赞数
+    var box2 = document.querySelector('.box2');
+    var myChart2 = echarts.init(box2);
+
+    // 发送Ajax请求
+    $.ajax({
+      url: 'index.php?p=Admin&c=articles&a=likeShow',
+      type: 'GET',
+      dataType: 'json',
+      success: function (data) {
+        // 解析JSON数据，将其赋值给变量
+        // 在此处进行数据可视化操作
         var countArray = Array();
         var nameArray = Array();  //文章标题数组
         console.log(data);
 
-
+        //获取帖子点赞量
         for (const item in data) {
           countArray.push(parseInt(data[item]));
           nameArray.push(item);
-          // console.log(item)
         }
 
         //折线图配置
         var option = {
+          title: {
+            text: "帖子点赞数柱状图",
+            x: 'center',
+            y: 'bottom'
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: { type: 'cross' }
+          },
+          legend: {},
+          xAxis: {
+            data: nameArray,
+            axisLabel: {
+              fontSize: 10 // 字体大小，单位为px
+            }
+          },
+          yAxis: {},
           series: [
             {
-              type: 'pie',
-              data: [
-                {
-                  value: 335,
-                  name: '直接访问'
-                },
-                {
-                  value: 234,
-                  name: '联盟广告'
-                },
-                {
-                  value: 1548,
-                  name: '搜索引擎'
-                }
-              ]
+              type: 'bar',
+              data: countArray,
+              barWidth: '20%'
             }
           ]
         };
-        myChart.setOption(option);
+        myChart2.setOption(option);
       },
       error: function (xhr, status, error) {
         console.log('Ajax error: ' + error);
-        console.log(1)
       }
     });
 

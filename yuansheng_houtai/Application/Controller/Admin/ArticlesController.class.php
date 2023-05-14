@@ -91,12 +91,39 @@ class ArticlesController extends BaseController{
         //获取cats分类
         $model=new \Core\Model('cats');
         $cats=$model->select();
-
+        //获取c_id,c_name,通过c_id匹配cartAmountMap对象中键，替换其中的键为c_name
+        foreach( $cats as $cat){
+            $c_id = $cat['c_id'];
+            $c_name = $cat['c_name'];
+            foreach ($cartAmountMap as $key => $value) {
+                if ($key == $c_id) {
+                    $cartAmountMap[$c_name] = $value;
+                    unset($cartAmountMap[$key]);
+                }
+            }
+        }
 
         // exit;
         header('Content-Type: application/json');
         echo json_encode($cartAmountMap,true);
     }
+
+    public function likeShowAction(){
+        $model=new \Core\Model('articles');
+        $list=$model->select();
+        $cartAmountMap = array();
+        foreach ($list as $article) {
+            $name = $article['article_name'];    //获取帖子名称                       
+            if (!isset($cartAmountMap[$name])) {
+                $cartAmountMap[$name] = 0;
+            }
+            $cartAmountMap[$name] += $article['article_like']; // 累加帖子点赞量
+        }
+        // exit;
+        header('Content-Type: application/json');
+        echo json_encode($cartAmountMap,true);
+    }
+
 
     public function dataAysAction(){
         $model = new \Core\Model('articles');

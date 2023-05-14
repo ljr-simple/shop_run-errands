@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-05-13 12:27:13
+/* Smarty version 3.1.32, created on 2023-05-14 07:11:10
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\odata.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_645f8221756c34_48990976',
+  'unifunc' => 'content_6460898e4f62b7_72036541',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd270e534efc80dbbad360d83124c5754ac2e2cfa' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\odata.html',
-      1 => 1683890616,
+      1 => 1684048268,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_645f8221756c34_48990976 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6460898e4f62b7_72036541 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -30,8 +30,8 @@ function content_645f8221756c34_48990976 (Smarty_Internal_Template $_smarty_tpl)
   <title>Echarts使用步骤</title>
   <style>
     .box {
-      width: 500px;
-      height: 500px;
+      width: 1400px;
+      height: 600px;
       background-color: white;
       margin: auto;
     }
@@ -88,6 +88,11 @@ function content_645f8221756c34_48990976 (Smarty_Internal_Template $_smarty_tpl)
 
         //折线图配置
         var option = {
+          title: {
+            text: "订单金额折线统计图",
+            x: 'center',
+            y: 'bottom'
+          },
           tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'cross' }
