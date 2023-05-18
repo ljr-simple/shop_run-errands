@@ -97,9 +97,12 @@ if(isset($_GET['pid'])){
 			array_push($a,$temp);
 			$_SESSION['pid']=$a;
 		}
-		//将任务的status置为0   任务已被接受
+		//将任务的status置为0   任务已被接受  Ping置为1，任务可被追踪
 		$sql1="update  products set Pstatus=0 where pid='$temp'";
+		$sql2="update  products set Ping=1 where pid='$temp'";
+
 		$rst1=mysqli_query(db_init(), $sql1);
+		$rst2=mysqli_query(db_init(), $sql2);
 	//如果没有$_SESSION['pid']	
 	}else{
 		$b=array($temp);

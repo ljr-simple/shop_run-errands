@@ -26,7 +26,7 @@ class ProductsController extends BaseController{
         else 
             $this->error('index.php?p=admin&c=Products&a=list', '删除失败');
     }
-    //添加商品
+    //添加任务
     public function addAction(){
         if(!empty($_POST)){
             $model=new \Core\Model('products');
@@ -35,6 +35,7 @@ class ProductsController extends BaseController{
             $type=$GLOBALS['config']['app']['type'];
             $upload=new \Lib\Upload($path, $size, $type);
             $_POST['Pstatus']='1';
+            $_POST['Ping']='0';
             if(!empty($_POST['Puser']))
                 $_POST['Puser']='admin';
             if($filepath=$upload->uploadOne($_FILES['PIMG'])){
@@ -84,7 +85,8 @@ class ProductsController extends BaseController{
         //实例化模型
         $model=new \Model\ProductsModel();
         $choose = [
-            'Pstatus' => ['eq','0']
+            'Pstatus' => ['eq','0'],
+            'Ping' => ['eq','0']
         ];
         $list=$model->select($choose);
         //加载视图

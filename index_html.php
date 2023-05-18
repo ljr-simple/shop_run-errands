@@ -220,7 +220,7 @@
 									$money=$uno1['money'];
 			        		echo "$money";  	
 			        	?>
-											</span> <a onClick="location.href='recharge_html.php'" class="btn btn-default form-btn">充值</a><br>
+											</span> <a onClick="location.href='multiplepay_html.php'" class="btn btn-default form-btn">充值</a> <a class="btn btn-default form-btn">提现</a><br>
 									</div>
 
 									<!-- 模态框底部 -->
@@ -312,14 +312,28 @@
 					var dateString = year + '-' + month + '-' + day; // 将年月日拼接成字符串
 					dateArray.push(dateString); // 将日期字符串存储到数组中
 				}
-				//倒序数组
-				var temp;
-				for (let i = 0; i < dateArray.length / 2; i++) {
-					temp = dateArray[i];
-					dateArray[i] = dateArray[dateArray.length - 1 - i];
-					dateArray[dateArray.length - 1 - i] = temp;
+				//倒序函数
+				function rev(arr){
+					var temp;	
+					for (let i = 0; i < arr.length / 2; i++) {
+						temp = arr[i];
+						arr[i] = arr[arr.length - 1 - i];
+						arr[arr.length - 1 - i] = temp;
+					}	
 				}
-				console.log(dateArray)
+				//倒序数组
+				// var temp;
+				// for (let i = 0; i < dateArray.length / 2; i++) {
+				// 	temp = dateArray[i];
+				// 	dateArray[i] = dateArray[dateArray.length - 1 - i];
+				// 	dateArray[dateArray.length - 1 - i] = temp;
+				// }
+				// console.log(dateArray)
+
+				//倒序数据
+				rev(dateArray);
+
+
 
 				//获取七天内天气状况
 				// 获取天气数据
@@ -341,6 +355,12 @@
 						data.data.forEach(item => {
 							infoTemMin.push(item.tem2);
 						});
+
+						
+						rev(infoTemMax);
+						rev(infoTemMin);
+
+
 						// 绘制图表
 						var chart = echarts.init(document.querySelector('.weather-chart'));
 						var option = {

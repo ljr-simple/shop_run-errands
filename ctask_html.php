@@ -144,7 +144,7 @@
 	</nav>
 		
 		<div id="mid">
-			<?php if(!isset($cpro)){?>
+			<?php if(empty($cpro)){?>
 				<div class="oneGood" >
 					<h3>没有待确认任务<h3>
 				</div>

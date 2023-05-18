@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2023-05-14 07:11:10
+/* Smarty version 3.1.32, created on 2023-05-18 03:18:19
   from 'E:\phpStudy\phpStudy_64\phpstudy_pro\WWW\PHP-shop-master\yuansheng_houtai\Application\View\Admin\odata.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_6460898e4f62b7_72036541',
+  'unifunc' => 'content_646598fb94b026_80369475',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd270e534efc80dbbad360d83124c5754ac2e2cfa' => 
     array (
       0 => 'E:\\phpStudy\\phpStudy_64\\phpstudy_pro\\WWW\\PHP-shop-master\\yuansheng_houtai\\Application\\View\\Admin\\odata.html',
-      1 => 1684048268,
+      1 => 1684379898,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6460898e4f62b7_72036541 (Smarty_Internal_Template $_smarty_tpl) {
+function content_646598fb94b026_80369475 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -108,8 +108,6 @@ function content_6460898e4f62b7_72036541 (Smarty_Internal_Template $_smarty_tpl)
           yAxis: {
             type: 'value',
             name: '金额',
-            min: 0,
-            max: 2500,
             position: 'left',
           },
           series: [{

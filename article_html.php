@@ -124,7 +124,7 @@
 			        		echo "$money";  	
 			        	?>
 											</span><a onClick="location.href='recharge_html.php'"
-											class="btn btn-default form-btn">充值</a><br>
+											class="btn btn-default form-btn">充值</a> <a class="btn btn-default form-btn">提现</a><br>
 									</div>
 
 									<!-- 模态框底部 -->

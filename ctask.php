@@ -109,9 +109,11 @@ if(isset($_SESSION['usersinfo'])){
 			$sql4="update cu_user set money=money-$mon where Uid=$uid";
 			$sql3="delete from orders where pid='$pid'";
 			$sql2="update products set Pstatus=1 where pid='$pid'";
+			$sql5="update products set Ping=0 where pid='$pid'";
 			$rst2=mysqli_query(db_init(), $sql2);
 			$rst3=mysqli_query(db_init(), $sql3);
 			$rst4=mysqli_query(db_init(), $sql4);
+			$rst4=mysqli_query(db_init(), $sql5);
 			unset($_GET['chid']);
 			unset($_GET['chidPid']);
 		}

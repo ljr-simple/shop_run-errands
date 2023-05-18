@@ -83,6 +83,8 @@ if(isset($_SESSION['usersinfo'])){
 	$count = db_fetch_all($countsql);
 
 	$orders=db_fetch_all($sql);
+	// var_dump($orders);
+	// exit();
 	require "order_html.php";
 	
 }else{

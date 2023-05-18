@@ -168,9 +168,14 @@
         </div>
         <div id="thing">
             <?php foreach($orders as $key => $v): 
+								// var_dump($orders);
                 $pid=$orders[$key]["Pid"];
-                $good_sql="select p.* from products p left join orders o on p.Pid=$pid";
+			        	$uno2=$_SESSION['usersinfo'];
+								$uno11=$uno2['Uno'];
+								// print_r($pid);
+                $good_sql="select p.*,o.Orunner from products p join orders o on p.Pid=o.Pid where p.Puser='$uno11'";
                 $P=db_fetch_all($good_sql);
+								// var_dump($P);
                 ?>
             <div class="fl">
 					<div class="fl1">
@@ -180,9 +185,9 @@
                         <a href="" class="order" style="text-decoration:none">订单编号：
                             <?php echo $orders[$key]["Oid"]?>
                         </a>
-                        <a href="" class="order" style="text-decoration:none">发布人：
+                        <a href="" class="order" style="text-decoration:none">跑腿人员：
                                 <?php
-                                echo $P[$key]["Puser"]?>
+                                echo $P[$key]["Orunner"]?>
                             </a><a href="" class="order" style="text-decoration:none">任务名称：
                                 <?php
                                 echo $P[$key]["Pname"]?>
