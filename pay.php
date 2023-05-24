@@ -21,10 +21,17 @@ if(isset($_POST['pid'])){
 		$pid=$pidArr[$key];
 		$num=$numArr[$key]??'1';
 		$sql="select Ptotal from products where Pid = '$pid'";
+		$sql1="select Uid from products p join cu_user cu on p.Puser=cu.Uno where Pid=49"; //查找相应任务的发布人id
+		
 		$oneSale=db_fetch_column($sql);
+		$one=db_fetch_column($sql1);
+		$cu_id=(int)$one;
+		// var_dump($cu_id);
 		$oneTotal=(int)$num*(float)$oneSale;
 		// $_SESSION['money']=$oneTotal;
-		$sql="insert into orders(Uid,Pid,number,Ototal_Amount,Otime,Orunner) VALUES($uid,$pid,$num,$oneTotal,NOW(),$uno);";
+		$sql="insert into orders(Uid,Pid,number,Ototal_Amount,Otime,Orunner) VALUES($cu_id,$pid,$num,$oneTotal,NOW(),'$uno');";
+		// var_dump($sql);
+		// exit();
 		$rst=mysqli_query(db_init(), $sql);
 		//更新session
   	$uno1=$_SESSION['usersinfo'];

@@ -187,7 +187,7 @@
                         </a>
                         <a href="" class="order" style="text-decoration:none">跑腿人员：
                                 <?php
-                                echo $P[$key]["Orunner"]?>
+                                echo $P[$key]["Orunner"]??'lijiahao'?>
                             </a><a href="" class="order" style="text-decoration:none">任务名称：
                                 <?php
                                 echo $P[$key]["Pname"]?>
